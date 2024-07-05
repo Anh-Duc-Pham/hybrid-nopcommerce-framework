@@ -6,6 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.CustomerPageObject;
 import pageObjects.HomePageObject;
@@ -15,7 +16,7 @@ import pageObjects.RegisterPageObject;
 import java.time.Duration;
 import java.util.Random;
 
-public class Lever_03_PageObject  {
+public class Lever_04_MultipleBrowser   {
     private WebDriver driver;
     private HomePageObject homePage;
     private RegisterPageObject registerPage;
@@ -23,10 +24,11 @@ public class Lever_03_PageObject  {
     private CustomerPageObject customerPage;
     private String emailAddress = getRandomEmail();
 
-
+    @Parameters("browser")
     @BeforeClass
-    public void beforeClass() {
+    public void beforeClass(String browserName) {
         driver = new FirefoxDriver();
+
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         driver.get("https://demo.nopcommerce.com/");
