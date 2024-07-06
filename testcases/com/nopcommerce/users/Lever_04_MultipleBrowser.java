@@ -1,7 +1,10 @@
 package com.nopcommerce.users;
 
 import commons.BasePage;
+import commons.BaseTest;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -16,7 +19,7 @@ import pageObjects.RegisterPageObject;
 import java.time.Duration;
 import java.util.Random;
 
-public class Lever_04_MultipleBrowser   {
+public class Lever_04_MultipleBrowser extends BaseTest {
     private WebDriver driver;
     private HomePageObject homePage;
     private RegisterPageObject registerPage;
@@ -27,19 +30,13 @@ public class Lever_04_MultipleBrowser   {
     @Parameters("browser")
     @BeforeClass
     public void beforeClass(String browserName) {
-        driver = new FirefoxDriver();
-
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        driver.get("https://demo.nopcommerce.com/");
-
-        //mở 1 url mở ra cái page nò cũng sẽ khởi tạo nó lên
-        // Từ 1 page này chuyển qua page kia -> khởi tạo page đó lên
-        homePage = new HomePageObject(driver);
+        driver = getBrowserDriver(browserName);
     }
 
     @Test
     public void User_01_Register_Empty_Data() {
+        homePage = new HomePageObject(driver);
+
         homePage.clickToRegisterLink();
         // TỪ home page click vào register link nó sẽ mở ra homePage
         registerPage = new RegisterPageObject(driver);
@@ -92,7 +89,6 @@ public class Lever_04_MultipleBrowser   {
         registerPage.clickToRegisterButton();
         Assert.assertEquals(registerPage.getPasswordValidationErrorMessageText(),
                 "<p>Password must meet the following rules: </p><ul><li>must have at least 6 characters and not greater than 64 characters</li></ul>");
-
 
     }
 
@@ -154,12 +150,9 @@ public class Lever_04_MultipleBrowser   {
 
     @AfterClass
     public void afterClass() {
-        driver.close();
+        closeWindow();
     }
 
-    public String getRandomEmail() {
-        Random emailNumber = new Random();
-        return "edenhazard" + emailNumber.nextInt(9999) + "@gmail.com";
-    }
+
 
 }
