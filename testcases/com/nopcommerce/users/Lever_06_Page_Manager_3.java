@@ -1,6 +1,7 @@
 package com.nopcommerce.users;
 
 import commons.BaseTest;
+import commons.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -12,7 +13,7 @@ import pageObjects.user.HomePageObject;
 import pageObjects.user.UserLoginPageObject;
 import pageObjects.user.RegisterPageObject;
 
-public class Lever_04_MultipleBrowser extends BaseTest {
+public class Lever_06_Page_Manager_3 extends BaseTest {
     private WebDriver driver;
     private HomePageObject homePage;
     private RegisterPageObject registerPage;
@@ -24,15 +25,12 @@ public class Lever_04_MultipleBrowser extends BaseTest {
     @BeforeClass
     public void beforeClass(String browserName, String adminUrl, String userUrl) {
         driver = getBrowserDriver(browserName, userUrl);
+        homePage = PageGeneratorManager.getHomePage(driver);
     }
 
     @Test
     public void User_01_Register_Empty_Data() {
-        homePage = new HomePageObject(driver);
-
-        homePage.clickToRegisterLink();
-        // TỪ home page click vào register link nó sẽ mở ra homePage
-        registerPage = new RegisterPageObject(driver);
+        registerPage = homePage.clickToRegisterLink();
 
         registerPage.clickToRegisterButton();
 
@@ -45,13 +43,10 @@ public class Lever_04_MultipleBrowser extends BaseTest {
 
     @Test
     public void User_02_Register_Invalid_Email() {
-        registerPage.clickToNopCommerceLogo();
+        homePage = registerPage.clickToNopCommerceLogo();
 
-        //Đang từ Register page ấn vào image logo thì nó mở ra trang home page
-        homePage = new HomePageObject(driver);
-        homePage.clickToRegisterLink();
-        // Từ Home Page click vào register link để mở trang Register page
-        registerPage = new RegisterPageObject(driver);
+        registerPage = homePage.clickToRegisterLink();
+
         registerPage.enterToFirstNameTextbox("Eden");
         registerPage.enterToLastNameTextbox("Hazard");
         registerPage.enterToEmailTextbox("EdenHazard@123");
@@ -66,13 +61,10 @@ public class Lever_04_MultipleBrowser extends BaseTest {
 
     @Test
     public void User_03_Register_Invalid_Password() {
-        registerPage.clickToNopCommerceLogo();
+        homePage = registerPage.clickToNopCommerceLogo();
 
-        homePage = new HomePageObject(driver);
+        registerPage = homePage.clickToRegisterLink();
 
-        homePage.clickToRegisterLink();
-        // Từ Home Page click vào register link để mở trang Register page
-        registerPage = new RegisterPageObject(driver);
         registerPage.enterToFirstNameTextbox("Eden");
         registerPage.enterToLastNameTextbox("Hazard");
         registerPage.enterToEmailTextbox("EdenHazard@gmail.com");
@@ -87,14 +79,10 @@ public class Lever_04_MultipleBrowser extends BaseTest {
 
     @Test
     public void User_04_Register_Incorrect_Confirm_Password() {
-        registerPage.clickToNopCommerceLogo();
+        homePage = registerPage.clickToNopCommerceLogo();
 
-        //Đang từ Register page ấn vào image logo thì nó mở ra trang home page
-        homePage = new HomePageObject(driver);
+        registerPage = homePage.clickToRegisterLink();
 
-        homePage.clickToRegisterLink();
-        // Từ Home Page click vào register link để mở trang Register page
-        registerPage = new RegisterPageObject(driver);
         registerPage.enterToFirstNameTextbox("Eden");
         registerPage.enterToLastNameTextbox("Hazard");
         registerPage.enterToEmailTextbox("EdenHazard@gmail.com");
@@ -107,13 +95,10 @@ public class Lever_04_MultipleBrowser extends BaseTest {
 
     @Test
     public void User_05_Register_Success() {
-        registerPage.clickToNopCommerceLogo();
+        homePage = registerPage.clickToNopCommerceLogo();
 
-        homePage = new HomePageObject(driver);
+        registerPage = homePage.clickToRegisterLink();
 
-        homePage.clickToRegisterLink();
-
-        registerPage = new RegisterPageObject(driver);
         registerPage.enterToFirstNameTextbox("Eden");
         registerPage.enterToLastNameTextbox("Hazard");
         registerPage.enterToEmailTextbox(emailAddress);
@@ -126,12 +111,9 @@ public class Lever_04_MultipleBrowser extends BaseTest {
 
     @Test
     public void User_06_Login_Success() {
-        registerPage.clickToNopCommerceLogo();
+        homePage = registerPage.clickToNopCommerceLogo();
 
-        homePage = new HomePageObject(driver);
-        homePage.clickToMyAccountLink();
-
-        customerPage = new CustomerPageObject(driver);
+        customerPage = homePage.clickToMyAccountLink();
 
         //verify
         Assert.assertEquals(customerPage.getFirstNameTextboxAttributeValue(), "Eden");

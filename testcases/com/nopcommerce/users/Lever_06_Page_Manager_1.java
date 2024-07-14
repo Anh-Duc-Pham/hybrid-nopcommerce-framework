@@ -12,7 +12,7 @@ import pageObjects.user.HomePageObject;
 import pageObjects.user.UserLoginPageObject;
 import pageObjects.user.RegisterPageObject;
 
-public class Lever_04_MultipleBrowser extends BaseTest {
+public class Lever_06_Page_Manager_1 extends BaseTest {
     private WebDriver driver;
     private HomePageObject homePage;
     private RegisterPageObject registerPage;

@@ -7,16 +7,16 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageObjects.user.CustomerPageObject;
-import pageObjects.user.HomePageObject;
-import pageObjects.user.UserLoginPageObject;
-import pageObjects.user.RegisterPageObject;
+import pageObject.factory.CustomerPageObject;
+import pageObject.factory.HomePageObject;
+import pageObject.factory.LoginPageObject;
+import pageObject.factory.RegisterPageObject;
 
-public class Lever_04_MultipleBrowser extends BaseTest {
+public class Lever_05_Selenium_Page_Factory extends BaseTest {
     private WebDriver driver;
     private HomePageObject homePage;
     private RegisterPageObject registerPage;
-    private UserLoginPageObject loginPage;
+    private LoginPageObject loginPage;
     private CustomerPageObject customerPage;
     private String emailAddress = getRandomEmail();
 
