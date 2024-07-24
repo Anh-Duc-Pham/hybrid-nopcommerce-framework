@@ -9,9 +9,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageObjects.admin.AdminDashboardPageObject;
-import pageObjects.admin.AdminLoginPageObject;
-import pageObjects.user.*;
+import pageObjects.nopCommerce.admin.AdminDashboardPageObject;
+import pageObjects.nopCommerce.admin.AdminLoginPageObject;
+import pageObjects.nopCommerce.user.*;
 
 public class Lever_10_Gloabal_Contants extends BaseTest {
     private WebDriver driver;
