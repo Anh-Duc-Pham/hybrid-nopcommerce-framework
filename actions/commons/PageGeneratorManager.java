@@ -3,10 +3,7 @@ package commons;
 import org.openqa.selenium.WebDriver;
 import pageObjects.admin.AdminDashboardPageObject;
 import pageObjects.admin.AdminLoginPageObject;
-import pageObjects.user.CustomerPageObject;
-import pageObjects.user.HomePageObject;
-import pageObjects.user.RegisterPageObject;
-import pageObjects.user.UserLoginPageObject;
+import pageObjects.user.*;
 
 public class PageGeneratorManager {
     public static CustomerPageObject getCustomerPage(WebDriver driver) {
@@ -29,6 +26,27 @@ public class PageGeneratorManager {
     }
     public static AdminDashboardPageObject getAdminDashboardPage(WebDriver driver) {
         return new AdminDashboardPageObject(driver);
+    }
+    public static AddressPageObject getAddressPage (WebDriver driver) {
+        return new AddressPageObject(driver);
+    }
+    public static OrdersPageObject getOrderPage (WebDriver driver) {
+        return new OrdersPageObject(driver);
+    }
+    public static DownloadableProductsPageObject getDownloadableProductPage (WebDriver driver) {
+        return new DownloadableProductsPageObject(driver);
+    }
+    public static BackInStockSubcriptionsPageObject getBackInStockSubscriptionPage (WebDriver driver) {
+        return new BackInStockSubcriptionsPageObject(driver);
+    }
+    public static RewardPointsPageObject getRewardPointPage (WebDriver driver) {
+        return new RewardPointsPageObject(driver);
+    }
+    public static ChangePasswordPageObject getChangePasswordPage (WebDriver driver) {
+        return new ChangePasswordPageObject(driver);
+    }
+    public static MyProductReviewPageObject getMyProductReviewPage (WebDriver driver) {
+        return new MyProductReviewPageObject(driver);
     }
 
 }

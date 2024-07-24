@@ -1,6 +1,7 @@
 package pageObjects.user;
 
 import commons.BasePage;
+import commons.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
 import pageUIs.user.MyAccountSideBarUI;
 
@@ -51,5 +52,37 @@ public class MyAccountSideBar extends BasePage {
         clickToElement(driver, MyAccountSideBarUI.MY_PRODUCT_REVIEW_LINK);
         return new MyProductReviewPageObject(driver);
     }
+
+    public MyAccountSideBar openDynamicSideBarPage(String pageName ) {
+        waitForElementClickable(driver, MyAccountSideBarUI.MY_ACCOUNT_DYNAMIC_LINK, pageName);
+        clickToElement(driver, MyAccountSideBarUI.MY_ACCOUNT_DYNAMIC_LINK, pageName);
+        switch (pageName) {
+            case "Customer info" :
+                return PageGeneratorManager.getCustomerPage(driver);
+            case "Addresses" :
+                return PageGeneratorManager.getAddressPage(driver);
+            case "Orders" :
+                return PageGeneratorManager.getOrderPage(driver);
+            case "Downloadable products" :
+                return PageGeneratorManager.getDownloadableProductPage(driver);
+            case "Back in stock subscriptions" :
+                return PageGeneratorManager.getBackInStockSubscriptionPage(driver);
+            case "Reward points" :
+                return PageGeneratorManager.getRewardPointPage(driver);
+            case "Change password" :
+                return PageGeneratorManager.getChangePasswordPage(driver);
+            case "My product reviews" :
+                return PageGeneratorManager.getMyProductReviewPage(driver);
+            default:
+                new RuntimeException("Sidebar name is incorrect");
+                return null;
+
+        }
+    }
+    public void clickDynamicSideBarPage (String pageName) {
+        waitForElementClickable(driver, MyAccountSideBarUI.MY_ACCOUNT_DYNAMIC_LINK, pageName);
+        clickToElement(driver, MyAccountSideBarUI.MY_ACCOUNT_DYNAMIC_LINK, pageName);
+    }
+
 
 }

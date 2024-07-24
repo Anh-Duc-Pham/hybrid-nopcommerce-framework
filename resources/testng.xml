@@ -8,7 +8,7 @@
     <test name="Run on Firefox browser">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="com.nopcommerce.users.Lever_09_Switch_PageUrl" />
+            <class name="com.nopcommerce.users.Lever_11_Dynamic_Locator" />l
         </classes>
     </test>
 
