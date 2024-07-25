@@ -1,4 +1,4 @@
-package pageUIs.admin;
+package pageUIs.nopCommerce.admin;
 
 import org.bouncycastle.pqc.crypto.util.PQCOtherInfoGenerator;
 

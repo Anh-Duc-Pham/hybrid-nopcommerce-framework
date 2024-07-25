@@ -1,5 +1,6 @@
 package commons;
 
+import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
@@ -270,6 +271,10 @@ public class BasePage {
     public void hoverToElement(WebDriver driver, String locator) {
         new Actions(driver).moveToElement(getWebElement(driver, locator)).perform();
     }
+    public void pressKeyToKeyboard(WebDriver driver, Keys keyName) {
+        new Actions(driver).keyDown(keyName).keyUp(keyName).perform();
+    }
+
 
     public void doubleClickToElement(WebDriver driver, String locator) {
         new Actions(driver).doubleClick(getWebElement(driver, locator)).perform();

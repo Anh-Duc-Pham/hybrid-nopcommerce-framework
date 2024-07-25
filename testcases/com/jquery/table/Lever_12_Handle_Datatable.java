@@ -1,7 +1,10 @@
 package com.jquery.table;
 
 import commons.BaseTest;
+import net.bytebuddy.asm.Advice;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -25,14 +28,27 @@ public class Lever_12_Handle_Datatable extends BaseTest {
 
     @Test
     public void User_01_() {
+        homePage.inputToSearchTextbox("Females", "283821");
+
+        homePage.inputToSearchTextbox("Country", "Albania");
+
+        homePage.inputToSearchTextbox("Males", "60681000");
+
+        homePage.inputToSearchTextbox("Total", "687522");
+        homePage.pressKeyToKeyboard(Keys.ENTER);
+
     }
 
     @Test
-    public void User_02_Login_Success() {
+    public void User_02_Click_Page_Number() {
+        homePage.clickToPageByNumber("6");
+        homePage.clickToPageByNumber("7");
+        Assert.assertTrue(homePage.isPageNumberActive("7"));
 
     }
     @Test
-    public void User_03_Switch_Page() {
+    public void User_03_Row_Value_Displayed() {
+        Assert.assertTrue(homePage.isRowValueDisplayed("351445","Caribbean","363661","715106"));
 
     }
     @AfterClass

@@ -3,7 +3,7 @@ package pageObjects.nopCommerce.user;
 import commons.BasePage;
 import commons.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
-import pageUIs.user.MyAccountSideBarUI;
+import pageUIs.nopCommerce.user.MyAccountSideBarUI;
 
 public class MyAccountSideBar extends BasePage {
     private WebDriver driver;

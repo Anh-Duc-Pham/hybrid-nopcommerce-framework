@@ -1,4 +1,4 @@
-package pageUIs.user;
+package pageUIs.nopCommerce.user;
 
 public class MyAccountSideBarUI {
     public static final String CUSTOMER_INFO_LINK = "xpath=//a[text()='Customer info']";
