@@ -70,10 +70,17 @@ public class HomePageObject extends BasePage {
 
     }
 
-    public void selecttItemByNameAndRow(String columnName, String row, String value) {
+    public void selectItemByNameAndRow(String columnName, String row, String value) {
         int columnIndexSelect = getListElementSize(driver, HomePageUI.DYNAMIC_COLUMN_INDEX_BY_COLUMN_NAME, columnName) + 1;
         waitForElementClickable(driver, HomePageUI.DYNAMIC_SELECT_BOX_BY_COLUMN_AND_ROW, row, String.valueOf(columnIndexSelect));
         selectItemInDefaultDropdown(driver, HomePageUI.DYNAMIC_SELECT_BOX_BY_COLUMN_AND_ROW, value, row, String.valueOf(columnIndexSelect));
+
+    }
+
+    public void clickToCheckBoxByNameAndRow(String columnName, String row) {
+        int columnIndex = getListElementSize(driver, HomePageUI.DYNAMIC_COLUMN_INDEX_BY_COLUMN_NAME, columnName) + 1;
+        waitForElementVisible(driver, HomePageUI.DYNAMIC_CHECK_BOX_BY_COLUMN_AND_ROW, row, String.valueOf(columnIndex));
+        checkToElement(driver, HomePageUI.DYNAMIC_CHECK_BOX_BY_COLUMN_AND_ROW, row, String.valueOf(columnIndex));
 
     }
 }

@@ -1,7 +1,6 @@
 package com.jquery.table;
 
 import commons.BaseTest;
-import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -78,8 +77,10 @@ public class Lever_12_Handle_Datatable extends BaseTest {
         homePage.inputToTxtByNameAndRow("Contact Person","2", "Eden Hazard");
         homePage.inputToTxtByNameAndRow("Company","1", "Chelsea");
 
-        homePage.selecttItemByNameAndRow("Country", "2", "Japan");
-        homePage.selecttItemByNameAndRow("Country", "3", "Malaysia");
+        homePage.selectItemByNameAndRow("Country", "2", "Japan");
+        homePage.selectItemByNameAndRow("Country", "3", "Malaysia");
+
+        homePage.clickToCheckBoxByNameAndRow("NPO?", "1");
 
 
     }

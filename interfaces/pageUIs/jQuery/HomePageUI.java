@@ -14,5 +14,6 @@ public class HomePageUI {
     public static String DYNAMIC_COLUMN_INDEX_BY_COLUMN_NAME = "xpath=//th[text()='%s']//preceding-sibling::th";
     public static String DYNAMIC_TEXTBOX_BY_COLUMN_AND_ROW = "xpath=//tr[%s]//td[%s]//input[@type='text']";
     public static String DYNAMIC_SELECT_BOX_BY_COLUMN_AND_ROW = "xpath=//tr[%s]//td[%s]//select";
+    public static String DYNAMIC_CHECK_BOX_BY_COLUMN_AND_ROW = "xpath=//tr[%s]//td[%s]//input[@type='checkbox']";
 
 }

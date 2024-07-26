@@ -253,6 +253,11 @@ public class BasePage {
             getWebElement(driver, locator).click();
         }
     }
+    public void checkToElement(WebDriver driver, String locator, String ...restParams) {
+        if (!getWebElement(driver, getDynamicLocator(locator, restParams)).isSelected()) {
+            getWebElement(driver, getDynamicLocator(locator, restParams)).click();
+        }
+    }
 
     public void uncheckToElement(WebDriver driver, String locator) {
         if (getWebElement(driver, locator).isSelected()) {
