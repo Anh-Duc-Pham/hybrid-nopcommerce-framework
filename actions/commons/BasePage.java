@@ -154,8 +154,16 @@ public class BasePage {
         return driver.findElement(getByLocator(locator));
     }
 
+    public WebElement getWebElement(WebDriver driver, String locator, String ...restParams) {
+        return driver.findElement(getByLocator(getDynamicLocator(locator,restParams)));
+    }
+
+
     public List<WebElement> getListWebElements(WebDriver driver, String locator) {
         return driver.findElements(getByLocator(locator));
+    }
+    public List<WebElement> getListWebElements(WebDriver driver, String locator, String ...restParams) {
+        return driver.findElements(getByLocator(getDynamicLocator(locator, restParams)));
     }
 
     public void clickToElement(WebDriver driver, String locator) {
@@ -178,6 +186,11 @@ public class BasePage {
     public void selectItemInDefaultDropdown(WebDriver driver, String locator, String itemValue) {
         new Select(getWebElement(driver, locator)).selectByVisibleText(itemValue);
     }
+
+    public void selectItemInDefaultDropdown(WebDriver driver, String locator, String itemValue, String ...restParams) {
+        new Select(getWebElement(driver, getDynamicLocator(locator,restParams))).selectByVisibleText(itemValue);
+    }
+
 
     public String getFirstItemTextInDefaultDropdown(WebDriver driver, String locator) {
         return new Select(getWebElement(driver, locator)).getFirstSelectedOption().getText();
@@ -230,6 +243,9 @@ public class BasePage {
 
     public int getListElementSize(WebDriver driver, String locator) {
         return getListWebElements(driver, locator).size();
+    }
+    public int getListElementSize(WebDriver driver, String locator, String ...restParams) {
+        return getListWebElements(driver, getDynamicLocator(locator, restParams)).size();
     }
 
     public void checkToElement(WebDriver driver, String locator) {
@@ -290,6 +306,9 @@ public class BasePage {
 
     public void sendKeyBoardToElement(WebDriver driver, String locator, Keys key) {
         new Actions(driver).sendKeys(getWebElement(driver, locator), key).perform();
+    }
+    public void sendKeyBoardToElement(WebDriver driver, String locator, Keys key, String ...restParams) {
+        new Actions(driver).sendKeys(getWebElement(driver, getDynamicLocator(locator, restParams)), key).perform();
     }
 
     public Object executeForBrowser(WebDriver driver, String javaScript) {
