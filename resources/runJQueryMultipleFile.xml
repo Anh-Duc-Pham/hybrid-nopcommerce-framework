@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Data Table Automation Testing">
+
+    <parameter name="pageUrl" value="https://www.jqueryscript.net/demo/CRUD-Data-Grid-Plugin-jQuery-Quickgrid/"/>
+
+    <test name="Run on Firefox browser">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="com.jquery.table.Lever_12_Handle_Datatable" />
+        </classes>
+    </test>
+
+</suite>

@@ -8,10 +8,12 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageUIs.nopCommerce.user.BasePageUI;
 
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
+
 
 public class BasePage {
     //BasePage Áp dụng nguyên tắc đóng gói - Encapsulation (Che giấu, ẩn giấu sự khởi tạo 1 đối tương/class
@@ -431,6 +433,16 @@ public class BasePage {
         return explicitWait.until(jQueryLoad) && explicitWait.until(jsLoad);
 
 
+    }
+    public void uploadMultipleFiles(WebDriver driver, String... fileNames) {
+        String filePath = GlobalConstants.UPLOAD_PATH;
+        String fullFileName = "";
+        for (String file: fileNames) {
+            fullFileName = fullFileName + filePath + file + "\n";
+
+        }
+        fullFileName = fullFileName.trim();
+        getWebElement(driver, BasePageUI.UPLOAD_FILE_TYPE).sendKeys(fullFileName);
     }
 
     private long longTimeout = GlobalConstants.LONG_TIMEOUT;
