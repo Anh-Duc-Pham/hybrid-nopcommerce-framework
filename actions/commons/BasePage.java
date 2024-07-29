@@ -167,6 +167,9 @@ public class BasePage {
     public List<WebElement> getListWebElements(WebDriver driver, String locator, String ...restParams) {
         return driver.findElements(getByLocator(getDynamicLocator(locator, restParams)));
     }
+    public void clickToElement(WebDriver driver, WebElement element) {
+        element.click();
+    }
 
     public void clickToElement(WebDriver driver, String locator) {
         getWebElement(driver, locator).click();
@@ -407,9 +410,15 @@ public class BasePage {
         new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.invisibilityOfAllElements(getListWebElements(driver, locator)));
     }
 
+
     public void waitForElementClickable(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.elementToBeClickable(getWebElement(driver, locator)));
     }
+
+    public void waitForElementClickable(WebDriver driver, WebElement element) {
+        new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.elementToBeClickable(element));
+    }
+
     public void waitForElementClickable(WebDriver driver, String locator, String ...restParams) {
         new WebDriverWait(driver, Duration.ofSeconds(longTimeout)).until(ExpectedConditions.elementToBeClickable(getWebElement(driver, getDynamicLocator(locator, restParams))));
     }
