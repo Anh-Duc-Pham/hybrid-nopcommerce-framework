@@ -71,7 +71,7 @@ public class Lever_13_Upload_Multiple_File extends BaseTest {
 
     @AfterClass
     public void afterClass() {
-        //closeWindow();
+        closeWindow();
     }
 
 
