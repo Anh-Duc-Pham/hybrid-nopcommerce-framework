@@ -1,5 +1,7 @@
 package commons;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.bouncycastle.oer.Switch;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
@@ -17,6 +19,10 @@ import java.time.Duration;
 import java.util.Random;
 
 public class BaseTest {
+    protected final Log log;
+    public BaseTest() {
+        log = LogFactory.getLog(getClass());
+    }
     private WebDriver driver;
     protected WebDriver getBrowserDriver(String browserName) {
         BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
