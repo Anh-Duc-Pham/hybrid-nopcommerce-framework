@@ -85,7 +85,9 @@ public class BaseTest {
         boolean pass = true;
         try {
             Assert.assertTrue(condition);
+            log.info("--------------------PASSED--------------------");
         } catch (Throwable e) {
+            log.info("--------------------FAILED--------------------");
             pass = false;
 
             VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
@@ -98,7 +100,9 @@ public class BaseTest {
         boolean pass = true;
         try {
             Assert.assertFalse(condition);
+            log.info("--------------------PASSED--------------------");
         } catch (Throwable e) {
+            log.info("--------------------FAILED--------------------");
             pass = false;
             VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
             Reporter.getCurrentTestResult().setThrowable(e);
@@ -110,7 +114,9 @@ public class BaseTest {
         boolean pass = true;
         try {
             Assert.assertEquals(actual, expected);
+            log.info("--------------------PASSED--------------------");
         } catch (Throwable e) {
+            log.info("--------------------FAILED--------------------");
             pass = false;
             VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
             Reporter.getCurrentTestResult().setThrowable(e);

@@ -11,7 +11,7 @@
     <test name="Run on Firefox browser">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="com.nopcommerce.users.Lever_14_Verify_Assert" />
+            <class name="com.nopcommerce.users.Lever_15_Log" />
         </classes>
     </test>
 
