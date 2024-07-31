@@ -15,7 +15,7 @@ public class Lever_13_Upload_Multiple_File extends BaseTest {
     private String hanoiCity = "Ha Noi.jpg";
     private String danangCity = "Da Nang.jpg";
     private String haGiangCity = "Ha Giang.jpg";
-    private String[] citys = {"Ha Noi.jpg","Da Nang.jpg","Ha Giang.jpg" };
+    private String[] citys = {"Ha Noi.jpg", "Da Nang.jpg", "Ha Giang.jpg"};
 
     @Parameters({"browser", "pageUrl"})
     @BeforeClass
@@ -25,10 +25,12 @@ public class Lever_13_Upload_Multiple_File extends BaseTest {
 
     }
 
-
+    @Test
     public void User_01_Upload_Single_File() {
         uploadPage.uploadMultipleFiles(driver, hanoiCity);
+        uploadPage.sleepInSecond(4);
         uploadPage.uploadMultipleFiles(driver, danangCity);
+        uploadPage.sleepInSecond(4);
         uploadPage.uploadMultipleFiles(driver, haGiangCity);
         uploadPage.sleepInSecond(1);
 
@@ -37,16 +39,16 @@ public class Lever_13_Upload_Multiple_File extends BaseTest {
         Assert.assertTrue(uploadPage.isFileLoaded(haGiangCity));
 
         uploadPage.clickToStartUploadButtonOnEachFile();
+        uploadPage.sleepInSecond(4);
 
         Assert.assertTrue(uploadPage.isUploadFileAppeer(hanoiCity));
         Assert.assertTrue(uploadPage.isUploadFileAppeer(danangCity));
         Assert.assertTrue(uploadPage.isUploadFileAppeer(haGiangCity));
 
 
-
     }
 
-    @Test
+
     public void User_02_Upload_Multiple_Files() {
         uploadPage.uploadMultipleFiles(driver, citys);
         Assert.assertTrue(uploadPage.isFileLoaded(hanoiCity));
