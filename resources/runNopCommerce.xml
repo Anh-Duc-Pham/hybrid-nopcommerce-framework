@@ -6,8 +6,6 @@
     </listeners>
 
 
-
-
     <test name="Run on Firefox browser">
         <parameter name="browser" value="firefox"/>
         <classes>

@@ -1,7 +1,7 @@
 package commons;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.bouncycastle.oer.Switch;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
@@ -19,9 +19,9 @@ import java.time.Duration;
 import java.util.Random;
 
 public class BaseTest {
-    protected final Log log;
+    protected final Logger log;
     public BaseTest() {
-        log = LogFactory.getLog(getClass());
+        log = LogManager.getLogger(getClass());
     }
     private WebDriver driver;
     protected WebDriver getBrowserDriver(String browserName) {
