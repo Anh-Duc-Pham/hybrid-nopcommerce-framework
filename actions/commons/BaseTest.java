@@ -24,6 +24,12 @@ public class BaseTest {
         log = LogManager.getLogger(getClass());
     }
     private WebDriver driver;
+
+    public WebDriver getDriver() {
+        return driver;
+    }
+
+
     protected WebDriver getBrowserDriver(String browserName) {
         BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
         switch (browser) {

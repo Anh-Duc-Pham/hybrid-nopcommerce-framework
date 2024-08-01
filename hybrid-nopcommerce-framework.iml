@@ -17,5 +17,6 @@
     <orderEntry type="library" name="selenium-server-4.18.1" level="project" />
     <orderEntry type="library" name="commons-codec-1.11" level="project" />
     <orderEntry type="library" name="log4j-api-2.19.0" level="project" />
+    <orderEntry type="library" name="ReportNG" level="project" />
   </component>
 </module>
