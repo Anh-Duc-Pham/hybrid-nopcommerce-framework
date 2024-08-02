@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import commons.BaseTest;
+import commons.GlobalConstants;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -20,27 +21,22 @@ public class ReportNGListener extends BaseTest implements ITestListener {
 
     @Override
     public void onStart(ITestContext context) {
-        System.out.println("---------- " + context.getName() + " STARTED test ----------");
     }
 
     @Override
     public void onFinish(ITestContext context) {
-        System.out.println("---------- " + context.getName() + " FINISHED test ----------");
     }
 
     @Override
     public void onTestStart(ITestResult result) {
-        System.out.println("---------- " + result.getName() + " STARTED test ----------");
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        System.out.println("---------- " + result.getName() + " SUCCESS test ----------");
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        System.out.println("---------- " + result.getName() + " FAILED test ----------");
         System.setProperty("org.uncommons.reportng.escape-output", "false");
 
         Object testClass = result.getInstance();
@@ -67,7 +63,7 @@ public class ReportNGListener extends BaseTest implements ITestListener {
             Calendar calendar = Calendar.getInstance();
             SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
             File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            String screenPath = System.getProperty("user.dir") + "\\ReportNGScreenShots\\" + screenshotName + "_" + formater.format(calendar.getTime()) + ".png";
+            String screenPath = GlobalConstants.REPORTING_IMAGE_PATH + screenshotName + "_" + formater.format(calendar.getTime()) + ".png";
             FileUtils.copyFile(source, new File(screenPath));
             return screenPath;
         } catch (IOException e) {
