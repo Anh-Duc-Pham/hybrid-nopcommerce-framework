@@ -27,6 +27,7 @@ public class TestNGAppender extends AbstractAppender {
         Reporter.log(logMessage + "<br>");
     }
 
+
     @Override
     public void append(LogEvent event) {
         Reporter.log(event.getMessage().getFormattedMessage());
