@@ -3,13 +3,13 @@
 <suite name="NopCommerce Automation Testing">
     <listeners>
         <listener class-name="commons.MethodListener"/>
-        <listener class-name="reportConfigs.ExtentTestListener"/>
+        <listener class-name="reportConfigs.AllureTestListener"/>
     </listeners>
 
     <test name="Run on Firefox browser">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="com.nopcommerce.users.Lever_17_Extent_V5" />
+            <class name="com.nopcommerce.users.Lever_18_Allure_Report" />
         </classes>
     </test>
 

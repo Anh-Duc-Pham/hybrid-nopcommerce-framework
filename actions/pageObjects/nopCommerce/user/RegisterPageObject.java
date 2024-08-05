@@ -2,6 +2,7 @@ package pageObjects.nopCommerce.user;
 
 import commons.BasePage;
 import commons.PageGeneratorManager;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageUIs.nopCommerce.user.RegisterPageUI;
 
@@ -12,6 +13,7 @@ public class RegisterPageObject extends BasePage {
         this.driver = driver;
     }
 
+    @Step("Click to Register Button")
     public void clickToRegisterButton() {
         waitForElementClickable(driver, RegisterPageUI.REGISTER_BUTTON);
         clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
@@ -48,26 +50,30 @@ public class RegisterPageObject extends BasePage {
         return PageGeneratorManager.getHomePage(driver);
     }
 
+    @Step("Enter to First Name textbox with value is {0}")
     public void enterToFirstNameTextbox(String firstName) {
         waitForElementVisible(driver, RegisterPageUI.FIRSTNAME_TEXTBOX);
         sendKeyToElement(driver, RegisterPageUI.FIRSTNAME_TEXTBOX, firstName);
     }
-
+    @Step("Enter to Last Name textbox with value is {0}")
     public void enterToLastNameTextbox(String lastName) {
         waitForElementVisible(driver, RegisterPageUI.LASTNAME_TEXTBOX);
         sendKeyToElement(driver, RegisterPageUI.LASTNAME_TEXTBOX, lastName);
     }
 
+    @Step("Enter to Email textbox with value is {0}")
     public void enterToEmailTextbox(String email) {
         waitForElementVisible(driver, RegisterPageUI.EMAIL_TEXTBOX);
         sendKeyToElement(driver, RegisterPageUI.EMAIL_TEXTBOX, email);
     }
 
+    @Step("Enter to Password textbox with value is {0}")
     public void enterToPasswordTextbox(String password) {
         waitForElementVisible(driver, RegisterPageUI.PASSWORD_TEXTBOX);
         sendKeyToElement(driver, RegisterPageUI.PASSWORD_TEXTBOX, password);
     }
 
+    @Step("Enter to Confirm Password textbox with value is {0}")
     public void enterToConfirmPasswordTextbox(String password) {
         waitForElementVisible(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX);
         sendKeyToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, password);

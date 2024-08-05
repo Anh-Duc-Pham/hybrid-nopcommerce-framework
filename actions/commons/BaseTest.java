@@ -2,16 +2,10 @@ package commons;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.bouncycastle.oer.Switch;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
@@ -148,7 +142,7 @@ public class BaseTest {
             File[] listOfFiles = file.listFiles();
             if (listOfFiles.length != 0) {
                 for (int i = 0; i < listOfFiles.length; i++) {
-                    if (listOfFiles[i].isFile() && !listOfFiles[i].getName().equals("environment.properties")) {
+                    if (listOfFiles[i].isFile() && !listOfFiles[i].getName().equals("allure-json/environment.properties")) {
                         new File(listOfFiles[i].toString()).delete();
                     }
                 }
