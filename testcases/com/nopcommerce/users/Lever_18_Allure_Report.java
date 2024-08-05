@@ -33,7 +33,7 @@ public class Lever_18_Allure_Report extends BaseTest {
     @Severity(SeverityLevel.NORMAL)
     @Test
     public void User_01_Register_Success() {
-        Assert.assertFalse(homePage.isRegisterLinkDisplayed());
+        Assert.assertTrue(homePage.isRegisterLinkDisplayed());
 
         registerPage = homePage.clickToRegisterLink();
 

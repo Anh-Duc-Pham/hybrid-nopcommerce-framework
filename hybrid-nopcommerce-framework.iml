@@ -21,5 +21,8 @@
     <orderEntry type="library" name="extentreports-5.1.2" level="project" />
     <orderEntry type="library" name="allure-lib" level="project" />
     <orderEntry type="library" name="allure-java-lib" level="project" />
+    <orderEntry type="library" name="extentreports-lib-ver5" level="project" />
+    <orderEntry type="library" name="log4j-api-2.19.0" level="project" />
+    <orderEntry type="library" name="ReportNG" level="project" />
   </component>
 </module>
