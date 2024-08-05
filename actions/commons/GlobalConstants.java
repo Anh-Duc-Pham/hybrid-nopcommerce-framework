@@ -25,7 +25,4 @@ public class GlobalConstants {
     public static final String REPORTING_IMAGE_PATH = RELATIVE_PROJECT_PATH + File.separator + "reportNGImage" + File.separator ;
     public static final String JAVA_VERSION = System.getProperty("java.version");
 
-
-
-
 }
