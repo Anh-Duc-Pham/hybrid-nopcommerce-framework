@@ -35,6 +35,7 @@ public class RegisterPageObject extends BasePageFactory {
     @FindBy(xpath = "//img[@alt='nopCommerce demo store']")
     private WebElement nopCommerceLogo;
 
+
     public RegisterPageObject(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(this.driver, this);

@@ -43,7 +43,7 @@ public class Lever_17_Extent_V5 extends BaseTest {
         verifyEquals(registerPage.getFirstNameErrorMessageText(), "First name is required");
 
         ExtentTestManager.getTest().log(Status.INFO,"Register - Step 04: Check Error Msg of Last Name text ");
-        verifyEquals(registerPage.getLastNameErrorMessageText(), "Last name is required.");
+        verifyEquals(registerPage.getLastNameErrorMessageText(), "Last name is required");
 
     }
     @Test
