@@ -1,15 +1,17 @@
 package pageObjects.nopCommerce.user;
 
+import commons.BaseElement;
 import commons.BasePage;
 import commons.PageGeneratorManager;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageUIs.nopCommerce.user.RegisterPageUI;
 
-public class RegisterPageObject extends BasePage {
+public class RegisterPageObject extends BaseElement {
     WebDriver driver;
 
     public RegisterPageObject(WebDriver driver) {
+        super(driver);
         this.driver = driver;
     }
 

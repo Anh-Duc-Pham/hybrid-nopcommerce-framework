@@ -1,14 +1,16 @@
 package pageObjects.nopCommerce.user;
 
+import commons.BaseElement;
 import commons.BasePage;
 import commons.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
 import pageUIs.nopCommerce.user.MyAccountSideBarUI;
 
-public class MyAccountSideBar extends BasePage {
+public class MyAccountSideBar extends BaseElement {
     private WebDriver driver;
 
     public MyAccountSideBar(WebDriver driver) {
+        super(driver);
         this.driver = driver;
     }
 

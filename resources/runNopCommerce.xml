@@ -9,7 +9,7 @@
     <test name="Run on Firefox browser">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="com.nopcommerce.users.Lever_18_Allure_Report" />
+            <class name="com.nopcommerce.users.Lever_20_Pattern_Object" />
         </classes>
     </test>
 
