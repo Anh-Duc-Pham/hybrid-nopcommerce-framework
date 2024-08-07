@@ -22,6 +22,7 @@ public class Lever_20_Undisplayed extends BaseTest {
 
     @Test
     public void Home_01_Element_Displayed() {
+
     }
     @Test
     public void Home_02_Element_Undisplayed_In_HTML() {
