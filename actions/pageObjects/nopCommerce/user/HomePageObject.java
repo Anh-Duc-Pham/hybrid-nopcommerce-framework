@@ -36,6 +36,12 @@ public class HomePageObject extends BaseElement {
 
     }
 
+    public CustomerPageObject openMyAccountLink() {
+        String myAccountLink = getElementAttribute(driver, HomePageUI.MY_ACCOUNT_LINK, "href");
+        openPageUrl(driver, myAccountLink);
+        return PageGeneratorManager.getCustomerPage(driver);
+    }
+
     @Step("Click to Logout link")
     public void clickToLogoutLink() {
         waitForElementClickable(driver, HomePageUI.LOGOUT_LINK);
