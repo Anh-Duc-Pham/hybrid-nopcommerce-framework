@@ -2,6 +2,7 @@ package pageObjects.nopCommerce.user;
 
 import commons.BaseElement;
 import commons.BasePage;
+import commons.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
 import pageUIs.nopCommerce.user.UserLoginPageUI;
 
@@ -23,9 +24,10 @@ public class UserLoginPageObject extends BaseElement {
         sendKeyToElement(driver, UserLoginPageUI.PASSWORD_TEXTBOX, password);
     }
 
-    public void clickToLoginButton() {
+    public HomePageObject clickToLoginButton() {
         waitForElementClickable(driver, UserLoginPageUI.LOGIN_BUTTON);
         clickToElement(driver, UserLoginPageUI.LOGIN_BUTTON);
+        return PageGeneratorManager.getHomePage(driver);
     }
     public void loginToUserAccount(String emailAddress, String password) {
         enterToEmailTextbox(emailAddress);
