@@ -55,7 +55,7 @@ public class Product extends BaseTest {
     }
 
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void afterClass() {
         closeWindow();
     }

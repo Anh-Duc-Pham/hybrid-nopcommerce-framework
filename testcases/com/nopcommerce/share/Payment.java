@@ -53,7 +53,7 @@ public class Payment extends BaseTest {
     }
 
 
-    @AfterClass
+    @AfterClass (alwaysRun = true)
     public void afterClass() {
         closeWindow();
     }

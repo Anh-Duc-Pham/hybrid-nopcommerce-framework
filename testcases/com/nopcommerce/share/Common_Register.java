@@ -4,10 +4,7 @@ import commons.BaseTest;
 import commons.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 import pageObjects.nopCommerce.user.HomePageObject;
 import pageObjects.nopCommerce.user.RegisterPageObject;
 
@@ -23,12 +20,12 @@ public class Common_Register extends BaseTest {
     public void beforeTest(String browserName) {
         driver = getBrowserDriver(browserName);
         homePage = PageGeneratorManager.getHomePage(driver);
+        System.out.println(driver.toString().toLowerCase());
 
         emailAddress = getRandomEmail();
         password = "123456";
         firstName = "eden";
         lastName = "hazard";
-
 
         registerPage = homePage.clickToRegisterLink();
 
@@ -40,6 +37,11 @@ public class Common_Register extends BaseTest {
 
         registerPage.clickToRegisterButton();
         Assert.assertEquals(registerPage.getRegisterSuccessMessageText(), "Your registration completed");
+    }
+
+    @AfterTest (alwaysRun = true)
+    public void afterTest( ){
+        System.out.println("run afterTest");
         closeWindow();
     }
 

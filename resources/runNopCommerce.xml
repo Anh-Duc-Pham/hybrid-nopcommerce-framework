@@ -6,8 +6,8 @@
         <listener class-name="reportConfigs.AllureTestListener"/>
     </listeners>
 
-    <test name="Run on Edge browser" preserve-order="true">
-        <parameter name="browser" value="Edge" />
+    <test name="Run on Firefox browser" preserve-order="true">
+        <parameter name="browser" value="firefox" />
         <classes>
             <class name="com.nopcommerce.share.Common_Register" />
 

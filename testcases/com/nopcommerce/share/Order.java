@@ -62,7 +62,7 @@ public class Order extends BaseTest {
 
 
 
-    @AfterClass
+    @AfterClass (alwaysRun = true)
     public void afterClass() {
         closeWindow();
     }
