@@ -1,12 +1,20 @@
 package com.orangehrm.PIM;
 
+import commons.BaseTest;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class PIM_01_Employee_List {
+public class PIM_01_Employee_List extends BaseTest {
+    private WebDriver driver;
+
+    @Parameters({"url", "browser"})
     @BeforeClass
-    public void beforeClass() {
+    public void beforeClass(String url, String browserName) {
+        getBrowserDriver(browserName, url);
+
 
     }
     @Test
@@ -59,6 +67,6 @@ public class PIM_01_Employee_List {
 
     @AfterClass
     public void afterClass() {
-
+        closeWindow();
     }
 }
