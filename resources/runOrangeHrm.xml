@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="NopCommerce Automation Testing">
+    <listeners>
+        <listener class-name="commons.MethodListener"/>
+        <listener class-name="reportConfigs.AllureTestListener"/>
+        <listener class-name="reportConfigs.ExtentTestListener"/>
+    </listeners>
+
+    <parameter name="url" value=""/>
+    <test name="Run on Firefox browser" preserve-order="true">
+        <parameter name="browser" value="firefox" />
+        <classes>
+            <class name="com.orangehrm.PIM.PIM_01_Employee_List" />
+        </classes>
+    </test>
+
+
+</suite>
