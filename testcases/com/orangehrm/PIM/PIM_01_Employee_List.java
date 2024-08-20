@@ -6,25 +6,46 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import pageObjects.orangehrm.*;
 import reportConfigs.ExtentTestManager;
 
 import java.lang.reflect.Method;
 
 public class PIM_01_Employee_List extends BaseTest {
     private WebDriver driver;
-    private String browserName;
+    private String browserName, employeeID;
+
+    private LoginPageObject loginPage;
+    private DashboardPageObject dashboardPage;
+    private EmployeeListPageObject employeeListPage;
+    private AddEmployeePageObject addEmployeePage;
 
     @Parameters({"url", "browser"})
     @BeforeClass
     public void beforeClass(String url, String browserName) {
-        getBrowserDriver(browserName, url);
+        driver = getBrowserDriver(browserName, url);
         this.browserName = browserName;
+        loginPage = PageGeneratorManager.getLoginPage(driver);
 
+        loginPage.enterToUsernameTextbox("Admin");
+        loginPage.enterToPasswordTextbox("admin123");
+        loginPage.clickToLoginButton();
+
+        dashboardPage = PageGeneratorManager.getDashboardPage(driver);
+        employeeListPage = dashboardPage.clickToPIMOnMenu();
 
     }
     @Test
     public void Employee_01_Add_New_Employee(Method method) {
         ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase() ," Employee_01_Add_New_Employee");
+        addEmployeePage = employeeListPage.clickToAddEmployeeOnMenu();
+        addEmployeePage.enterToTextboxByName("firstName", "");
+        addEmployeePage.enterToTextboxByName("lastName", "");
+
+        employeeID = addEmployeePage.getEmployeeID();
+        addEmployeePage.clickToSaveButton();
+        addEmployeePage.isSuccessMsgDisplayed();
+
 
 
     }
