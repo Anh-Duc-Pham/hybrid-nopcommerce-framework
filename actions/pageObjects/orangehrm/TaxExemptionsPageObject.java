@@ -1,4 +1,12 @@
 package pageObjects.orangehrm;
 
-public class TaxExemptionsPageObject {
+import commons.BasePage;
+import org.openqa.selenium.WebDriver;
+
+public class TaxExemptionsPageObject extends BasePage {
+    WebDriver driver;
+
+    public TaxExemptionsPageObject(WebDriver driver) {
+        this.driver = driver;
+    }
 }
