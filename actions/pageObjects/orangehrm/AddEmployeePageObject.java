@@ -9,4 +9,17 @@ public class AddEmployeePageObject extends BasePage {
     public AddEmployeePageObject(WebDriver driver) {
         this.driver = driver;
     }
+
+    public void enterToTextboxByName(String firstName, String eden) {
+    }
+
+    public String getEmployeeID() {
+    }
+
+    public void clickToSaveButton() {
+    }
+
+    public void isSuccessMsgDisplayed(String successfullySaved) {
+
+    }
 }

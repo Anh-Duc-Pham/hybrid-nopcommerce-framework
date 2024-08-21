@@ -9,4 +9,17 @@ public class EmployeeListPageObject extends BasePage {
     public EmployeeListPageObject(WebDriver driver) {
         this.driver = driver;
     }
+
+    public AddEmployeePageObject clickToAddEmployeeOnMenu() {
+        return null;
+    }
+
+    public void enterToEmployeeIDTextbox(String employeeID) {
+    }
+
+    public void clickToSearchButton() {
+    }
+
+    public boolean isValueDisplayedAtColumName(String id, String employeeID) {
+    }
 }

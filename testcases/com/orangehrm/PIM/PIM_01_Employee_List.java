@@ -2,6 +2,7 @@ package com.orangehrm.PIM;
 
 import commons.BaseTest;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -19,6 +20,7 @@ public class PIM_01_Employee_List extends BaseTest {
     private DashboardPageObject dashboardPage;
     private EmployeeListPageObject employeeListPage;
     private AddEmployeePageObject addEmployeePage;
+    private PersonalDetailsPageObject personalDetailsPage;
 
     @Parameters({"url", "browser"})
     @BeforeClass
@@ -39,12 +41,28 @@ public class PIM_01_Employee_List extends BaseTest {
     public void Employee_01_Add_New_Employee(Method method) {
         ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase() ," Employee_01_Add_New_Employee");
         addEmployeePage = employeeListPage.clickToAddEmployeeOnMenu();
-        addEmployeePage.enterToTextboxByName("firstName", "");
+        addEmployeePage.enterToTextboxByName("firstName", "Eden");
         addEmployeePage.enterToTextboxByName("lastName", "");
 
         employeeID = addEmployeePage.getEmployeeID();
         addEmployeePage.clickToSaveButton();
-        addEmployeePage.isSuccessMsgDisplayed();
+        addEmployeePage.isSuccessMsgDisplayed("Successfully Saved");
+        //p[contains(@class,'oxd-text--toast-message') and text()='Successfully Saved']
+        personalDetailsPage = PageGeneratorManager.getPersonalDetailsPage(driver);
+
+        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("firstName"), "Eden");
+        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("lastName"), "");
+        Assert.assertEquals(personalDetailsPage.getEmployeeIDValue(), employeeID);
+
+        employeeListPage = personalDetailsPage.clickToEmployeeListButton();
+
+        employeeListPage.enterToEmployeeIDTextbox(employeeID);
+        employeeListPage.clickToSearchButton();
+
+        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Id", employeeID));
+        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("First (& Middle) Name", "Eden"));
+        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Last Name", ""));
+
 
 
 

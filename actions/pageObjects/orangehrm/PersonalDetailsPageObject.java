@@ -9,4 +9,13 @@ public class PersonalDetailsPageObject extends BasePage {
     public PersonalDetailsPageObject(WebDriver driver) {
         this.driver = driver;
     }
+
+    public double getTextboxValueByName(String firstName) {
+    }
+
+    public byte[] getEmployeeIDValue() {
+    }
+
+    public EmployeeListPageObject clickToEmployeeListButton() {
+    }
 }

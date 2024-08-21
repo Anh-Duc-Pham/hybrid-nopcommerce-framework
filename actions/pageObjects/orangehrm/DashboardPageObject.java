@@ -9,4 +9,8 @@ public class DashboardPageObject extends BasePage {
     public DashboardPageObject(WebDriver driver) {
         this.driver = driver;
     }
+
+    public EmployeeListPageObject clickToPIMOnMenu() {
+        return null;
+    }
 }

@@ -9,4 +9,14 @@ public class LoginPageObject extends BasePage {
     public LoginPageObject(WebDriver driver) {
         this.driver = driver;
     }
+
+    public void enterToUsernameTextbox(String admin) {
+    }
+
+    public void enterToPasswordTextbox(String admin123) {
+        
+    }
+
+    public void clickToLoginButton() {
+    }
 }
