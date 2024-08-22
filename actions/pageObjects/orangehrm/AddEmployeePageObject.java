@@ -14,6 +14,7 @@ public class AddEmployeePageObject extends BasePage {
     }
 
     public String getEmployeeID() {
+        return "";
     }
 
     public void clickToSaveButton() {
