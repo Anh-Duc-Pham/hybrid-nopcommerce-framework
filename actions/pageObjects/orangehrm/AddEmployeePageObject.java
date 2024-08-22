@@ -19,7 +19,8 @@ public class AddEmployeePageObject extends BasePage {
     public void clickToSaveButton() {
     }
 
-    public void isSuccessMsgDisplayed(String successfullySaved) {
+    public boolean isSuccessMsgDisplayed(String successfullySaved) {
 
+        return false;
     }
 }

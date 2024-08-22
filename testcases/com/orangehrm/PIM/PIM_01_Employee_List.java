@@ -46,7 +46,7 @@ public class PIM_01_Employee_List extends BaseTest {
 
         employeeID = addEmployeePage.getEmployeeID();
         addEmployeePage.clickToSaveButton();
-        addEmployeePage.isSuccessMsgDisplayed("Successfully Saved");
+        Assert.assertTrue(addEmployeePage.isSuccessMsgDisplayed("Successfully Saved"));
         //p[contains(@class,'oxd-text--toast-message') and text()='Successfully Saved']
         personalDetailsPage = PageGeneratorManager.getPersonalDetailsPage(driver);
 
