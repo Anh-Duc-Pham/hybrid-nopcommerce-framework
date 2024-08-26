@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 
 public class PIM_01_Employee_List extends BaseTest {
     private WebDriver driver;
-    private String browserName, employeeID;
+    private String browserName, employeeID, firstName, lastName;
 
     private LoginPageObject loginPage;
     private DashboardPageObject dashboardPage;
@@ -27,13 +27,14 @@ public class PIM_01_Employee_List extends BaseTest {
     public void beforeClass(String url, String browserName) {
         driver = getBrowserDriver(browserName, url);
         this.browserName = browserName;
+        firstName = "eden";
+        lastName = "hazard";
         loginPage = PageGeneratorManager.getLoginPage(driver);
 
-        loginPage.enterToUsernameTextbox("Admin");
-        loginPage.enterToPasswordTextbox("admin123");
-        loginPage.clickToLoginButton();
+        loginPage.enterToUsernameTextbox(GlobalConstants.ADMIN_ORANGE_HRM_USER);
+        loginPage.enterToPasswordTextbox(GlobalConstants.ADMIN_ORANGE_HRM_PASSWORD);
+        dashboardPage = loginPage.clickToLoginButton();
 
-        dashboardPage = PageGeneratorManager.getDashboardPage(driver);
         employeeListPage = dashboardPage.clickToPIMOnMenu();
 
     }
@@ -41,17 +42,21 @@ public class PIM_01_Employee_List extends BaseTest {
     public void Employee_01_Add_New_Employee(Method method) {
         ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase() ," Employee_01_Add_New_Employee");
         addEmployeePage = employeeListPage.clickToAddEmployeeOnMenu();
-        addEmployeePage.enterToTextboxByName("firstName", "Eden");
-        addEmployeePage.enterToTextboxByName("lastName", "");
-
+        addEmployeePage.enterToTextboxByName("firstName", firstName);
+        addEmployeePage.enterToTextboxByName("lastName", lastName);
         employeeID = addEmployeePage.getEmployeeID();
+
         addEmployeePage.clickToSaveButton();
         Assert.assertTrue(addEmployeePage.isSuccessMsgDisplayed("Successfully Saved"));
-        //p[contains(@class,'oxd-text--toast-message') and text()='Successfully Saved']
+        addEmployeePage.waitForSpinnerInvisible();
+
         personalDetailsPage = PageGeneratorManager.getPersonalDetailsPage(driver);
 
-        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("firstName"), "Eden");
-        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("lastName"), "");
+        Assert.assertTrue(personalDetailsPage.isPersonalDetailHeaderDisplayed());
+        personalDetailsPage.waitForSpinnerInvisible();
+
+        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("firstName"), firstName);
+        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("lastName"), lastName);
         Assert.assertEquals(personalDetailsPage.getEmployeeIDValue(), employeeID);
 
         employeeListPage = personalDetailsPage.clickToEmployeeListButton();
@@ -59,9 +64,9 @@ public class PIM_01_Employee_List extends BaseTest {
         employeeListPage.enterToEmployeeIDTextbox(employeeID);
         employeeListPage.clickToSearchButton();
 
-        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Id", employeeID));
-        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("First (& Middle) Name", "Eden"));
-        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Last Name", ""));
+        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Id", "1",  employeeID));
+        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("First (& Middle) Name","1", firstName));
+        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Last Name","1", lastName));
 
 
 

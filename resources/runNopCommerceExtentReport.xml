@@ -6,8 +6,8 @@
         <listener class-name="reportConfigs.ExtentTestListener"/>
     </listeners>
 
-    <test name="Run on Firefox browser">
-        <parameter name="browser" value="firefox"/>
+    <test name="Run on Chrome">
+        <parameter name="browser" value="chrome"/>
         <classes>
             <class name="com.nopcommerce.users.Lever_17_Extent_V5" />
         </classes>
