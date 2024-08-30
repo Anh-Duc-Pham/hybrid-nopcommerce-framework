@@ -32,4 +32,32 @@ public class PersonalDetailsPageObject extends BaseActions {
         waitForElementVisible(driver, PersonalDetailsUI.PERSONAL_DETAILS_PAGE_HEADER);
         return isElementDisplayed(driver, PersonalDetailsUI.PERSONAL_DETAILS_PAGE_HEADER);
     }
+
+    public void enterToLicenseNumber(String licenseNumber) {
+        waitForElementVisible(driver, PersonalDetailsUI.LICENSE_NUMBER);
+        sendKeyToElement(driver, PersonalDetailsUI.LICENSE_NUMBER, licenseNumber);
+    }
+
+    public void enterToDatePickerByName(String licenseExpiryDate, String value) {
+        waitForElementVisible(driver, PersonalDetailsUI.DYNAMIC_DATE_PICKER_BY_NAME, licenseExpiryDate);
+        sendKeyToElement(driver, PersonalDetailsUI.DYNAMIC_DATE_PICKER_BY_NAME, value, licenseExpiryDate);
+    }
+
+    public void enterToCustomDropDownByName(String nationality, String value) {
+    }
+
+    public void clickTosaveButton() {
+    }
+
+    public byte[] getLicenseNumberText() {
+    }
+
+    public double getCustomDropDownValueByName(String nationality) {
+    }
+
+    public double getDatePickerByNameValueByName(String licenseExpiryDate) {
+    }
+
+    public boolean isRadioButtonSelectedByName(String male) {
+    }
 }

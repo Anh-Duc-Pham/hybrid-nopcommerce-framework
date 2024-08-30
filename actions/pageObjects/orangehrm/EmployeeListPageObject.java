@@ -29,5 +29,4 @@ public class EmployeeListPageObject extends BaseActions {
         waitForSpinnerInvisible();
     }
 
-
 }
