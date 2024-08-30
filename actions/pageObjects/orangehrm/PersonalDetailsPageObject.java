@@ -1,6 +1,5 @@
 package pageObjects.orangehrm;
 
-import commons.BasePage;
 import org.openqa.selenium.WebDriver;
 import pageUIs.orangehrm.PersonalDetailsUI;
 
@@ -38,26 +37,51 @@ public class PersonalDetailsPageObject extends BaseActions {
         sendKeyToElement(driver, PersonalDetailsUI.LICENSE_NUMBER, licenseNumber);
     }
 
-    public void enterToDatePickerByName(String licenseExpiryDate, String value) {
-        waitForElementVisible(driver, PersonalDetailsUI.DYNAMIC_DATE_PICKER_BY_NAME, licenseExpiryDate);
-        sendKeyToElement(driver, PersonalDetailsUI.DYNAMIC_DATE_PICKER_BY_NAME, value, licenseExpiryDate);
+    public void enterToDatePickerByName(String name, String value) {
+        waitForElementVisible(driver, PersonalDetailsUI.DYNAMIC_DATE_PICKER_BY_NAME, name);
+        sendKeyToElement(driver, PersonalDetailsUI.DYNAMIC_DATE_PICKER_BY_NAME, value, name);
     }
 
-    public void enterToCustomDropDownByName(String nationality, String value) {
+
+    public void enterToNationalityCustomDropDown(String nation) {
+        waitForElementClickable(driver, PersonalDetailsUI.NATION_DROPDOWN_PARENT);
+        selectItemInCustomDropdown(driver, PersonalDetailsUI.NATION_DROPDOWN_PARENT, PersonalDetailsUI.CHILDREN_DROPDOWN, nation);
+
     }
 
-    public void clickTosaveButton() {
+    public void enterToMaritalStatusCustomDropDown(String maritalStatus) {
+        waitForElementClickable(driver, PersonalDetailsUI.MARITAL_DROPDOWN_PARENT);
+        selectItemInCustomDropdown(driver, PersonalDetailsUI.MARITAL_DROPDOWN_PARENT, PersonalDetailsUI.CHILDREN_DROPDOWN, maritalStatus);
+
     }
 
-    public byte[] getLicenseNumberText() {
+
+    public void clickToSaveButton() {
+        waitForElementClickable(driver, PersonalDetailsUI.SAVE_BUTTON);
+        clickToElement(driver, PersonalDetailsUI.SAVE_BUTTON);
     }
 
-    public double getCustomDropDownValueByName(String nationality) {
+    public String getLicenseNumberText() {
+        waitForElementVisible(driver, PersonalDetailsUI.LICENSE_NUMBER);
+        return getElementAttribute(driver, PersonalDetailsUI.LICENSE_NUMBER, "value");
     }
 
-    public double getDatePickerByNameValueByName(String licenseExpiryDate) {
+
+
+    public String getDatePickerByNameValueByName(String datePickerName) {
+        waitForElementVisible(driver, PersonalDetailsUI.DYNAMIC_DATE_PICKER_BY_NAME, datePickerName);
+        return  getElementAttribute(driver, PersonalDetailsUI.DYNAMIC_DATE_PICKER_BY_NAME, "value",datePickerName);
     }
 
-    public boolean isRadioButtonSelectedByName(String male) {
+
+
+    public String getNationDropDownValue() {
+        waitForElementVisible(driver, PersonalDetailsUI.NATION_DROPDOWN_TXT);
+        return getElementText(driver, PersonalDetailsUI.NATION_DROPDOWN_TXT);
+    }
+
+    public String getMaritalDropDownValue() {
+        waitForElementVisible(driver, PersonalDetailsUI.MARITAL_DROPDOWN_TXT);
+        return getElementText(driver, PersonalDetailsUI.MARITAL_DROPDOWN_TXT);
     }
 }

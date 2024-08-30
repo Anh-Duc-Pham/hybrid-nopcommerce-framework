@@ -32,7 +32,7 @@ public class PIM_01_Employee_List extends BaseTest {
         firstName = "eden";
         lastName = "hazard";
 
-        licenseNumber ="S999-999-999";
+        licenseNumber = "S999-999-999";
         licenseExpireDate = "2024-01-01";
         nation = "Albanian";
         maritalStatus = "Single";
@@ -48,9 +48,10 @@ public class PIM_01_Employee_List extends BaseTest {
         employeeListPage = dashboardPage.clickToPIMOnMenu();
 
     }
+
     @Test
     public void Employee_01_Add_New_Employee(Method method) {
-        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase() ," Employee_01_Add_New_Employee");
+        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase(), " Employee_01_Add_New_Employee");
         addEmployeePage = employeeListPage.clickToAddEmployeeOnMenu();
         addEmployeePage.enterToTextboxByName("firstName", firstName);
         addEmployeePage.enterToTextboxByName("lastName", lastName);
@@ -74,17 +75,16 @@ public class PIM_01_Employee_List extends BaseTest {
         employeeListPage.enterToEmployeeIDTextbox(employeeID);
         employeeListPage.clickToSearchButton();
 
-        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Id", "1",  employeeID));
-        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("First (& Middle) Name","1", firstName));
-        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Last Name","1", lastName));
-
-
+        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Id", "1", employeeID));
+        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("First (& Middle) Name", "1", firstName));
+        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Last Name", "1", lastName));
 
 
     }
+
     @Test
     public void Employee_02_Upload_Avatar(Method method) {
-        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase() ,"Employee_02_Upload_Avatar");
+        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase(), "Employee_02_Upload_Avatar");
         personalDetailsPage = employeeListPage.clickToEditIconByEmployeeID(employeeID);
 
         Assert.assertTrue(personalDetailsPage.isPersonalDetailHeaderDisplayed());
@@ -96,87 +96,86 @@ public class PIM_01_Employee_List extends BaseTest {
         personalDetailsPage.enterToLicenseNumber(licenseNumber);
 
         personalDetailsPage.enterToDatePickerByName("License Expiry Date", licenseExpireDate);
-        personalDetailsPage.enterToCustomDropDownByName("Nationality", nation);
-        personalDetailsPage.enterToCustomDropDownByName("Marital Status", maritalStatus);
+        personalDetailsPage.enterToNationalityCustomDropDown(nation);
+        personalDetailsPage.enterToMaritalStatusCustomDropDown(maritalStatus);
         personalDetailsPage.enterToDatePickerByName("Date of Birth", dateOfBirth);
         personalDetailsPage.clickToRadioButtonByName("Male");
 
-        personalDetailsPage.clickTosaveButton();
+        personalDetailsPage.clickToSaveButton();
 
         Assert.assertTrue(addEmployeePage.isSuccessMsgDisplayed("Successfully Updated"));
 
         personalDetailsPage.waitForSpinnerInvisible();
 
-        Assert.assertEquals(personalDetailsPage.getLicenseNumberText(),"");
+        Assert.assertEquals(personalDetailsPage.getLicenseNumberText(), licenseNumber);
 
-        Assert.assertEquals(personalDetailsPage.getCustomDropDownValueByName("Nationality"),"");
-        Assert.assertEquals(personalDetailsPage.getCustomDropDownValueByName("Marital Status"),"");
+        Assert.assertEquals(personalDetailsPage.getNationDropDownValue(), nation);
+        Assert.assertEquals(personalDetailsPage.getMaritalDropDownValue(), maritalStatus);
 
-        Assert.assertEquals(personalDetailsPage.getDatePickerByNameValueByName("License Expiry Date"),"");
-        Assert.assertEquals(personalDetailsPage.getDatePickerByNameValueByName("Date of Birth"),"");
+        Assert.assertEquals(personalDetailsPage.getDatePickerByNameValueByName("License Expiry Date"), licenseExpireDate);
+        Assert.assertEquals(personalDetailsPage.getDatePickerByNameValueByName("Date of Birth"), dateOfBirth);
 
         Assert.assertTrue(personalDetailsPage.isRadioButtonSelectedByName("Male"));
 
 
-
-
-
-
-
-
-
-
     }
+
     @Test
     public void Employee_03_Personal_Details(Method method) {
-        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase() ,"Employee_03_Personal_Details");
+        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase(), "Employee_03_Personal_Details");
 
 
     }
+
     @Test
     public void Employee_04_Contact_Details(Method method) {
-        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase() ,"Employee_04_Contact_Details");
+        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase(), "Employee_04_Contact_Details");
 
 
     }
+
     @Test
     public void Employee_05_Emergency_Details(Method method) {
-        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase() ,"Employee_05_Emergency_Details");
+        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase(), "Employee_05_Emergency_Details");
 
 
     }
+
     @Test
     public void Employee_06_Assigned_Dependents(Method method) {
-        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase() ,"Employee_06_Assigned_Dependents");
+        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase(), "Employee_06_Assigned_Dependents");
 
     }
+
     @Test
     public void Employee_07_Edit_View_Job(Method method) {
-        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase() ," Employee_07_Edit_View_Job");
+        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase(), " Employee_07_Edit_View_Job");
 
     }
+
     @Test
     public void Employee_08_Edit_View_Salary(Method method) {
-        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase() ,"Employee_08_Edit_View_Salary");
+        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase(), "Employee_08_Edit_View_Salary");
 
     }
+
     @Test
     public void Employee_09_Edit_View_Tax(Method method) {
-        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase() ,"Employee_09_Edit_View_Tax");
+        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase(), "Employee_09_Edit_View_Tax");
 
     }
+
     @Test
     public void Employee_10_Qualification(Method method) {
-        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase() ,"Employee_10_Qualification");
+        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase(), "Employee_10_Qualification");
 
     }
+
     @Test
     public void Employee_11_Search_Employee(Method method) {
-        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase() ,"Employee_11_Search_Employee");
+        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase(), "Employee_11_Search_Employee");
 
     }
-
-
 
 
     @AfterClass

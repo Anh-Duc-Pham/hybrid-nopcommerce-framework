@@ -298,6 +298,9 @@ public class BasePage {
     public boolean isElementSelected(WebDriver driver, String locator) {
         return getWebElement(driver, locator).isSelected();
     }
+    public boolean isElementSelected(WebDriver driver, String locator, String ...restParams) {
+        return getWebElement(driver, getDynamicLocator(locator, restParams)).isSelected();
+    }
 
     public boolean isElementEnabled(WebDriver driver, String locator) {
         return getWebElement(driver, locator).isEnabled();
@@ -367,7 +370,12 @@ public class BasePage {
 
     public void clickToElementByJS(WebDriver driver, String locator) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", getWebElement(driver, locator));
-        sleepInSecond(3);
+        sleepInSecond(2);
+    }
+
+    public void clickToElementByJS(WebDriver driver, String locator, String ...restParams) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", getWebElement(driver, getDynamicLocator(locator, restParams)));
+        sleepInSecond(2);
     }
 
     public void scrollToElementOnTopByJS(WebDriver driver, String locator) {

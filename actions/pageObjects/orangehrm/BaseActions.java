@@ -31,6 +31,11 @@ public class BaseActions extends BasePage {
         waitForSpinnerInvisible();
         return PageGeneratorManager.getPersonalDetailsPage(driver);
     }
-    public void clickToRadioButtonByName(String male) {
+    public void clickToRadioButtonByName(String name) {
+        clickToElementByJS(driver, BaseActionsUI.RADIO_BUTTON_BY_NAME, name);
+
+    }
+    public boolean isRadioButtonSelectedByName(String name) {
+        return isElementSelected(driver, BaseActionsUI.RADIO_BUTTON_BY_NAME,name);
     }
 }
