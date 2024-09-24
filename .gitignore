@@ -3,6 +3,8 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 .idea
+/logs/
+/browserLogs/
 
 
 ### Eclipse ###
@@ -16,6 +18,7 @@ out/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
+
 
 ### NetBeans ###
 /nbproject/private/

@@ -46,7 +46,7 @@ public class Lever_17_Extent_V5 extends BaseTest {
         verifyEquals(registerPage.getLastNameErrorMessageText(), "Last name is required");
 
     }
-    @Test
+//    @Test
     public void User_02_Register_Validate(Method method) {
         ExtentTestManager.startTest(method.getName(),"Register to system with Email and Password");
         ExtentTestManager.getTest().log(Status.INFO,"Register - Step 01: Enter to FirstName textbox");

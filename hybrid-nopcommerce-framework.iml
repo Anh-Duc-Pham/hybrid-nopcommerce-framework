@@ -24,5 +24,6 @@
     <orderEntry type="library" name="extentreports-lib-ver5" level="project" />
     <orderEntry type="library" name="log4j-api-2.19.0" level="project" />
     <orderEntry type="library" name="ReportNG" level="project" />
+    <orderEntry type="library" name="libFaker" level="project" />
   </component>
 </module>
