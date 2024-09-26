@@ -25,5 +25,6 @@
     <orderEntry type="library" name="log4j-api-2.19.0" level="project" />
     <orderEntry type="library" name="ReportNG" level="project" />
     <orderEntry type="library" name="libFaker" level="project" />
+    <orderEntry type="library" name="libFaker" level="project" />
   </component>
 </module>

@@ -7,23 +7,23 @@
     </listeners>
 
     <test name="Run on Chrome">
-        <parameter name="browser" value="chrome_headless"/>
+        <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="com.nopcommerce.users.Lever_17_Extent_V5" />
+            <class name="com.nopcommerce.users.Lever_23_Faker" />
         </classes>
     </test>
-    <test name="Run on Edge">
-        <parameter name="browser" value="edge_headless"/>
-        <classes>
-            <class name="com.nopcommerce.users.Lever_17_Extent_V5" />
-        </classes>
-    </test>
-    <test name="Run on Firefox">
-        <parameter name="browser" value="firefox_headless"/>
-        <classes>
-            <class name="com.nopcommerce.users.Lever_17_Extent_V5" />
-        </classes>
-    </test>
+<!--    <test name="Run on Edge">-->
+<!--        <parameter name="browser" value="edge_headless"/>-->
+<!--        <classes>-->
+<!--            <class name="com.nopcommerce.users.Lever_17_Extent_V5" />-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="Run on Firefox">-->
+<!--        <parameter name="browser" value="firefox_headless"/>-->
+<!--        <classes>-->
+<!--            <class name="com.nopcommerce.users.Lever_17_Extent_V5" />-->
+<!--        </classes>-->
+<!--    </test>-->
 
 
 </suite>
