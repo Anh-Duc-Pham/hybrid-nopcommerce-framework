@@ -11,6 +11,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.nopCommerce.user.HomePageObject;
 import pageObjects.nopCommerce.user.RegisterPageObject;
+import pojoData.UserInfo;
 import reportConfigs.ExtentTestManager;
 
 import java.lang.reflect.Method;
@@ -21,6 +22,7 @@ public class Lever_27_Data_POJO extends BaseTest {
     private RegisterPageObject registerPage;
 
     private String emailAddress;
+    private UserInfo userInfo;
 
     @Parameters("browser")
     @BeforeClass
@@ -29,7 +31,14 @@ public class Lever_27_Data_POJO extends BaseTest {
         homePage = PageGeneratorManager.getHomePage(driver);
         registerPage = PageGeneratorManager.getRegisterPage(driver);
 
-        emailAddress = UserObject.email;
+        userInfo = UserInfo.getUser();
+
+        userInfo.setEmailAddress(getRandomEmail("hazard"));
+        userInfo.setFirstName("eden");
+        userInfo.setLastName("hazard");
+        userInfo.setPassword("123456");
+
+
 
     }
 
