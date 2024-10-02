@@ -100,6 +100,13 @@ public class BaseTest {
         return "edenhazard" + emailNumber.nextInt(9999) + "@gmail.com";
     }
 
+    protected String getRandomEmail(String prefix) {
+        Random emailNumber = new Random();
+        return prefix + emailNumber.nextInt(9999) + "@gmail.com";
+    }
+
+
+
     protected void closeWindow() {
         String cmd = null;
         try {
