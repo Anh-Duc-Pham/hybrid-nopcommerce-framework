@@ -1,4 +1,4 @@
-package pojoData;
+package pojoData.nopcommerce;
 
 public class UserInfo {
     private String emailAddress;

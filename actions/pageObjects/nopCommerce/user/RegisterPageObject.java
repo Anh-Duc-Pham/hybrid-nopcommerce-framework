@@ -1,11 +1,11 @@
 package pageObjects.nopCommerce.user;
 
 import commons.BaseElement;
-import commons.BasePage;
 import commons.PageGeneratorManager;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageUIs.nopCommerce.user.RegisterPageUI;
+import pojoData.nopcommerce.UserInfo;
 
 public class RegisterPageObject extends BaseElement {
     WebDriver driver;
@@ -84,5 +84,15 @@ public class RegisterPageObject extends BaseElement {
     public String getRegisterSuccessMessageText() {
         waitForElementVisible(driver, RegisterPageUI.REGISTRATION_COMPLETED_MSG);
         return getElementText(driver, RegisterPageUI.REGISTRATION_COMPLETED_MSG);
+    }
+
+    @Step("Enter to profile infor")
+    public void enterToProfileFile (UserInfo userInfo){
+        enterToFirstNameTextbox(userInfo.getFirstName());
+        enterToLastNameTextbox(userInfo.getLastName());
+        enterToPasswordTextbox(userInfo.getPassword());
+        enterToConfirmPasswordTextbox(userInfo.getPassword());
+        enterToEmailTextbox(userInfo.getEmailAddress());
+
     }
 }

@@ -8,11 +8,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.orangehrm.*;
+import pojoData.PIM.EmployeeData;
 import reportConfigs.ExtentTestManager;
 
 import java.lang.reflect.Method;
 
-public class PIM_01_Employee_List extends BaseTest {
+public class PIM_01_Employee_POJO extends BaseTest {
     private WebDriver driver;
 
     private LoginPageObject loginPage;
@@ -21,22 +22,23 @@ public class PIM_01_Employee_List extends BaseTest {
     private AddEmployeePageObject addEmployeePage;
     private PersonalDetailsPageObject personalDetailsPage;
 
-    private String browserName, employeeID, firstName, lastName;
-    private String licenseNumber, licenseExpireDate, nation, maritalStatus, dateOfBirth;
-
+    private String browserName;
+    private EmployeeData employeeData;
     @Parameters({"url", "browser"})
     @BeforeClass
     public void beforeClass(String url, String browserName) {
         driver = getBrowserDriver(browserName, url);
         this.browserName = browserName;
-        firstName = "eden";
-        lastName = "hazard";
 
-        licenseNumber = "S999-999-999";
-        licenseExpireDate = "2024-01-01";
-        nation = "Albanian";
-        maritalStatus = "Single";
-        dateOfBirth = "1993-01-01";
+        employeeData = EmployeeData.getEmployeeData();
+        employeeData.setFirstName("eden");
+        employeeData.setLastName("hazard");
+
+        employeeData.setLicenseNumber("S999-999-999");
+        employeeData.setLicenseExpireDate("2024-01-01");
+        employeeData.setNation("Albanian");
+        employeeData.setMaritalStatus("Single");
+        employeeData.setDateOfBirth("1993-01-01");
 
 
         loginPage = PageGeneratorManager.getLoginPage(driver);
@@ -53,9 +55,9 @@ public class PIM_01_Employee_List extends BaseTest {
     public void Employee_01_Add_New_Employee(Method method) {
         ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase(), " Employee_01_Add_New_Employee");
         addEmployeePage = employeeListPage.clickToAddEmployeeOnMenu();
-        addEmployeePage.enterToTextboxByName("firstName", firstName);
-        addEmployeePage.enterToTextboxByName("lastName", lastName);
-        employeeID = addEmployeePage.getEmployeeID();
+        addEmployeePage.enterToTextboxByName("firstName", employeeData.getFirstName());
+        addEmployeePage.enterToTextboxByName("lastName", employeeData.getLastName());
+        employeeData.setEmployeeID(addEmployeePage.getEmployeeID());
 
         addEmployeePage.clickToSaveButton();
         Assert.assertTrue(addEmployeePage.isSuccessMsgDisplayed("Successfully Saved"));
@@ -66,18 +68,18 @@ public class PIM_01_Employee_List extends BaseTest {
         Assert.assertTrue(personalDetailsPage.isPersonalDetailHeaderDisplayed());
         personalDetailsPage.waitForSpinnerInvisible();
 
-        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("firstName"), firstName);
-        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("lastName"), lastName);
-        Assert.assertEquals(personalDetailsPage.getEmployeeIDValue(), employeeID);
+        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("firstName"), employeeData.getFirstName());
+        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("lastName"), employeeData.getLastName());
+        Assert.assertEquals(personalDetailsPage.getEmployeeIDValue(), employeeData.getEmployeeID());
 
         employeeListPage = personalDetailsPage.clickToEmployeeListButton();
 
-        employeeListPage.enterToEmployeeIDTextbox(employeeID);
+        employeeListPage.enterToEmployeeIDTextbox(employeeData.getEmployeeID());
         employeeListPage.clickToSearchButton();
 
-        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Id", "1", employeeID));
-        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("First (& Middle) Name", "1", firstName));
-        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Last Name", "1", lastName));
+        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Id", "1", employeeData.getEmployeeID()));
+        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("First (& Middle) Name", "1", employeeData.getFirstName()));
+        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Last Name", "1", employeeData.getLastName()));
 
 
     }
@@ -85,21 +87,15 @@ public class PIM_01_Employee_List extends BaseTest {
     @Test
     public void Employee_02_Upload_Avatar(Method method) {
         ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase(), "Employee_02_Upload_Avatar");
-        personalDetailsPage = employeeListPage.clickToEditIconByEmployeeID(employeeID);
+        personalDetailsPage = employeeListPage.clickToEditIconByEmployeeID(employeeData.getEmployeeID());
 
         Assert.assertTrue(personalDetailsPage.isPersonalDetailHeaderDisplayed());
 
-        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("firstName"), firstName);
-        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("lastName"), lastName);
-        Assert.assertEquals(personalDetailsPage.getEmployeeIDValue(), employeeID);
+        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("firstName"), employeeData.getFirstName());
+        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("lastName"), employeeData.getLastName());
+        Assert.assertEquals(personalDetailsPage.getEmployeeIDValue(), employeeData.getEmployeeID());
 
-        personalDetailsPage.enterToLicenseNumber(licenseNumber);
-
-        personalDetailsPage.enterToDatePickerByName("License Expiry Date", licenseExpireDate);
-        personalDetailsPage.enterToNationalityCustomDropDown(nation);
-        personalDetailsPage.enterToMaritalStatusCustomDropDown(maritalStatus);
-        personalDetailsPage.enterToDatePickerByName("Date of Birth", dateOfBirth);
-        personalDetailsPage.clickToRadioButtonByName("Male");
+        personalDetailsPage.setPersonalDetail(employeeData);
 
         personalDetailsPage.clickToSaveButton();
 
@@ -107,13 +103,13 @@ public class PIM_01_Employee_List extends BaseTest {
 
         personalDetailsPage.waitForSpinnerInvisible();
 
-        Assert.assertEquals(personalDetailsPage.getLicenseNumberText(), licenseNumber);
+        Assert.assertEquals(personalDetailsPage.getLicenseNumberText(), employeeData.getLicenseNumber());
 
-        Assert.assertEquals(personalDetailsPage.getNationDropDownValue(), nation);
-        Assert.assertEquals(personalDetailsPage.getMaritalDropDownValue(), maritalStatus);
+        Assert.assertEquals(personalDetailsPage.getNationDropDownValue(), employeeData.getNation());
+        Assert.assertEquals(personalDetailsPage.getMaritalDropDownValue(), employeeData.getMaritalStatus());
 
-        Assert.assertEquals(personalDetailsPage.getDatePickerByNameValueByName("License Expiry Date"), licenseExpireDate);
-        Assert.assertEquals(personalDetailsPage.getDatePickerByNameValueByName("Date of Birth"), dateOfBirth);
+        Assert.assertEquals(personalDetailsPage.getDatePickerByNameValueByName("License Expiry Date"), employeeData.getLicenseExpireDate());
+        Assert.assertEquals(personalDetailsPage.getDatePickerByNameValueByName("Date of Birth"), employeeData.getDateOfBirth());
 
         Assert.assertTrue(personalDetailsPage.isRadioButtonSelectedByName("Male"));
 

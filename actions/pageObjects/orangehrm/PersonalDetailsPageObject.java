@@ -2,6 +2,7 @@ package pageObjects.orangehrm;
 
 import org.openqa.selenium.WebDriver;
 import pageUIs.orangehrm.PersonalDetailsUI;
+import pojoData.PIM.EmployeeData;
 
 public class PersonalDetailsPageObject extends BaseActions {
     private WebDriver driver;
@@ -83,5 +84,15 @@ public class PersonalDetailsPageObject extends BaseActions {
     public String getMaritalDropDownValue() {
         waitForElementVisible(driver, PersonalDetailsUI.MARITAL_DROPDOWN_TXT);
         return getElementText(driver, PersonalDetailsUI.MARITAL_DROPDOWN_TXT);
+    }
+
+    public void setPersonalDetail(EmployeeData employeeData) {
+        enterToLicenseNumber(employeeData.getLicenseNumber());
+
+        enterToDatePickerByName("License Expiry Date", employeeData.getLicenseExpireDate());
+        enterToNationalityCustomDropDown(employeeData.getNation());
+        enterToMaritalStatusCustomDropDown(employeeData.getMaritalStatus());
+        enterToDatePickerByName("Date of Birth", employeeData.getDateOfBirth());
+        clickToRadioButtonByName("Male");
     }
 }
