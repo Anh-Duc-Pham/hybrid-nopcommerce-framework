@@ -1,10 +1,13 @@
 package com.eclipTips.admin;
 
+import jsonData.nopcommerce.UserInfoData;
 import org.testng.annotations.Test;
 
 public class Topic_01_Rest_Parameter {
     String orderLink = "a[text()='Order']";
     String sidebarLink = "a[text()='%s']";
+    UserInfoData userInfoData;
+
 
     @Test
     public void TC_01() {
@@ -29,4 +32,7 @@ public class Topic_01_Rest_Parameter {
         System.out.println("click to" + locator);
 
     }
+
+
+
 }
