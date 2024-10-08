@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="NopCommerce Automation Testing">
+<suite parallel="none" name="NopCommerce Automation Testing">
     <listeners>
         <listener class-name="commons.MethodListener"/>
         <listener class-name="reportConfigs.ExtentTestListener"/>
@@ -9,7 +9,7 @@
     <test name="Run on Chrome">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="com.nopcommerce.users.Lever_23_Faker" />
+            <class name="com.nopcommerce.users.Lever_29_Data_Excel" />
         </classes>
     </test>
 <!--    <test name="Run on Edge">-->

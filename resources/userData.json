@@ -2,5 +2,8 @@
   "firstname": "eden",
   "lastname" : "hazard",
   "email": "eden.hazard",
-  "password": "1234567"
+  "password": "1234567",
+  "Checkout": {
+    "discount" : "SALE30"
+  }
 }
