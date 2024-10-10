@@ -3,6 +3,7 @@ package com.nopcommerce.users;
 import com.aventstack.extentreports.Status;
 import commons.BaseTest;
 import commons.PageGeneratorManager;
+import jsonData.nopcommerce.UserInfoData;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -20,8 +21,8 @@ public class Lever_28_Data_Jackson extends BaseTest {
     private HomePageObject homePage;
     private RegisterPageObject registerPage;
 
-    private String emailAddress;
-    private UserInfo userInfo;
+    private String emailAddress, firstName, lastName, password;
+    private UserInfoData userInfo;
 
     @Parameters("browser")
     @BeforeClass
@@ -30,12 +31,18 @@ public class Lever_28_Data_Jackson extends BaseTest {
         homePage = PageGeneratorManager.getHomePage(driver);
         registerPage = PageGeneratorManager.getRegisterPage(driver);
 
-        userInfo = UserInfo.getUser();
+        userInfo = UserInfoData.getUserInfo();
 
-        userInfo.setEmailAddress(getRandomEmail("hazard"));
-        userInfo.setFirstName("eden");
-        userInfo.setLastName("hazard");
-        userInfo.setPassword("123456");
+        emailAddress = getRandomEmail(userInfo.getEmail());
+        userInfo.setEmail(emailAddress);
+
+        firstName = userInfo.getFirstName();
+        lastName = userInfo.getLastName();
+        password = userInfo.getPassword();
+
+
+
+
 
 
 
@@ -62,7 +69,7 @@ public class Lever_28_Data_Jackson extends BaseTest {
         ExtentTestManager.startTest(method.getName(),"Register to system with Email and Password");
 
         ExtentTestManager.getTest().log(Status.INFO,"Register - Step 01: Enter to User Info");
-        registerPage.enterToProfileFile(userInfo);
+        registerPage.enterToProfileFileJson(userInfo);
 
         ExtentTestManager.getTest().log(Status.INFO,"Register - Step 06: Click to Register Button ");
         registerPage.clickToRegisterButton();

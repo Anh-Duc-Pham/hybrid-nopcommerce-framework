@@ -11,7 +11,7 @@
     <test name="Run on Chrome browser" preserve-order="true">
         <parameter name="browser" value="chrome" />
         <classes>
-            <class name="com.orangehrm.PIM.PIM_01_Employee_List" />
+            <class name="com.orangehrm.PIM.PIM_02_Excel_File" />
         </classes>
     </test>
 

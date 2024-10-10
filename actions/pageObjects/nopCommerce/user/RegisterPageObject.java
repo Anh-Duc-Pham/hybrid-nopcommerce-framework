@@ -3,6 +3,7 @@ package pageObjects.nopCommerce.user;
 import commons.BaseElement;
 import commons.PageGeneratorManager;
 import io.qameta.allure.Step;
+import jsonData.nopcommerce.UserInfoData;
 import org.openqa.selenium.WebDriver;
 import pageUIs.nopCommerce.user.RegisterPageUI;
 import pojoData.nopcommerce.UserInfo;
@@ -86,13 +87,23 @@ public class RegisterPageObject extends BaseElement {
         return getElementText(driver, RegisterPageUI.REGISTRATION_COMPLETED_MSG);
     }
 
-    @Step("Enter to profile infor")
+    @Step("Enter to profile info")
     public void enterToProfileFile (UserInfo userInfo){
         enterToFirstNameTextbox(userInfo.getFirstName());
         enterToLastNameTextbox(userInfo.getLastName());
         enterToPasswordTextbox(userInfo.getPassword());
         enterToConfirmPasswordTextbox(userInfo.getPassword());
         enterToEmailTextbox(userInfo.getEmailAddress());
+
+    }
+
+    @Step("Enter to profile info via json")
+    public void enterToProfileFileJson (UserInfoData userInfo){
+        enterToFirstNameTextbox(userInfo.getFirstName());
+        enterToLastNameTextbox(userInfo.getLastName());
+        enterToPasswordTextbox(userInfo.getPassword());
+        enterToConfirmPasswordTextbox(userInfo.getPassword());
+        enterToEmailTextbox(userInfo.getEmail());
 
     }
 }
