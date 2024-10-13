@@ -26,7 +26,7 @@ public class GlobalConstants {
     public static final String BROWSER_LOGS = RELATIVE_PROJECT_PATH + File.separator + "browserLogs" + File.separator ;
     public static final String RESOURCE_PATH = RELATIVE_PROJECT_PATH + File.separator + "resources" + File.separator ;
     public static final String DATA_PATH = RELATIVE_PROJECT_PATH + File.separator + "dataTest" + File.separator ;
-
+    public static final String ENVIRONMENT_CONFIG_PATH = RELATIVE_PROJECT_PATH + File.separator + "environmentConfig" + File.separator ;
 
     public static final String JAVA_VERSION = System.getProperty("java.version");
 

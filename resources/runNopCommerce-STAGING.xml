@@ -6,12 +6,12 @@
         <listener class-name="reportConfigs.AllureTestListener"/>
     </listeners>
 
-    <parameter name="server" value="dev"/>
+    <parameter name="url" value="https://staging.nopcommerce.com/"/>
 
     <test name="Run on Firefox browser" preserve-order="true">
         <parameter name="browser" value="firefox" />
         <classes>
-            <class name="com.nopcommerce.users.Lever_32_Multiple_Environment_04_Owner" />
+            <class name="com.nopcommerce.users.Lever_32_Multiple_Environment_02" />
 
 <!--            <class name="com.nopcommerce.share.Order" />-->
 <!--            <class name="com.nopcommerce.share.Payment" />-->

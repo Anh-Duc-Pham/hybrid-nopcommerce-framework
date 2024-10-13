@@ -95,6 +95,47 @@ public class BaseTest {
         return driver;
     }
 
+    protected WebDriver getBrowserEnvironment(String browserName, String serverName) {
+        BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
+        switch (browser) {
+            case FIREFOX:
+                driver = new FirefoxDriver();
+                break;
+            case CHROME:
+                driver = new ChromeDriver();
+                break;
+            case EDGE:
+                driver = new EdgeDriver();
+                break;
+            default:
+                throw new RuntimeException("Browser name is not valid");
+
+        }
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
+        driver.get(getServerByName(serverName));
+        return driver;
+    }
+
+    private String getServerByName(String serverName) {
+        ServerList server = ServerList.valueOf(serverName.toUpperCase());
+
+        switch (server) {
+            case DEV:
+                serverName = "https://demo.nopcommerce.com/";
+                break;
+            case TEST:
+                serverName = "https://test.nopcommerce.com/";
+                break;
+            case STAGING:
+                serverName = "https://staging.nopcommerce.com/";
+                break;
+            default:
+                throw new IllegalArgumentException("Unexpected value" + serverName);
+        }
+        return serverName;
+    }
+
     protected String getRandomEmail() {
         Random emailNumber = new Random();
         return "edenhazard" + emailNumber.nextInt(9999) + "@gmail.com";
