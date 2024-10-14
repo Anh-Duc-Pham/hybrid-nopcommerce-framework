@@ -53,4 +53,8 @@ public class HomePageObject extends BaseElement {
         waitForElementVisible(driver, HomePageUI.REGISTER_LINK);
         return isElementDisplayed(driver, HomePageUI.REGISTER_LINK);
     }
+
+    public SearchPageObject clickToSearchIcon() {
+        return PageGeneratorManager.getSearchPage(driver);
+    }
 }
