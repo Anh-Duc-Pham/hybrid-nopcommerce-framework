@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SauceLab Automation Testing">
+    <listeners>
+        <listener class-name="commons.MethodListener"/>
+        <listener class-name="reportConfigs.ExtentTestListener"/>
+    </listeners>
+
+    <parameter name="url" value="https://www.saucedemo.com/"/>
+    <test name="Run on Chrome browser" preserve-order="true">
+        <parameter name="browser" value="chrome" />
+        <classes>
+            <class name="com.saucelab.Lever_30_Sort_Data" />
+        </classes>
+    </test>
+
+
+</suite>
