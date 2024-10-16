@@ -40,12 +40,6 @@ public class Lever_28_Data_Jackson extends BaseTest {
         lastName = userInfo.getLastName();
         password = userInfo.getPassword();
 
-
-
-
-
-
-
     }
 
     @Test
