@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="NopCommerce Automation Testing">
+<!--    <listeners>-->
+<!--        <listener class-name="commons.MethodListener"/>-->
+<!--        <listener class-name="reportConfigs.AllureTestListener"/>-->
+<!--        <listener class-name="reportConfigs.ExtentTestListener"/>-->
+<!--    </listeners>-->
+
+    <parameter name="url" value="http://automationfc.testing:90/orangehrm"/>
+    <test name="Run on Chrome browser" preserve-order="true">
+        <parameter name="browser" value="chrome" />
+        <parameter name="ipAddress" value="192.168.1.10"/>
+        <parameter name="portNumber" value="5555"/>
+        <classes>
+            <class name="com.orangehrm.cloudTesting.PIM_01_Employee_List_Grid" />
+        </classes>
+    </test>
+
+    <test name="Run on Firefox browser" preserve-order="true">
+        <parameter name="browser" value="firefox" />
+        <parameter name="ipAddress" value="192.168.1.10"/>
+        <parameter name="portNumber" value="6666"/>
+        <classes>
+            <class name="com.orangehrm.cloudTesting.PIM_01_Employee_List_Grid  " />
+        </classes>
+    </test>
+
+
+</suite>
