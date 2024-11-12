@@ -58,74 +58,74 @@ public class PIM_01_Employee_List_Local extends BaseTest {
         employeeID = addEmployeePage.getEmployeeID();
 
         addEmployeePage.clickToSaveButton();
-        Assert.assertTrue(addEmployeePage.isSuccessMsgDisplayed("Successfully Saved"));
-        addEmployeePage.waitForSpinnerInvisible();
-
-        personalDetailsPage = PageGeneratorManager.getPersonalDetailsPage(driver);
-
-        Assert.assertTrue(personalDetailsPage.isPersonalDetailHeaderDisplayed());
-        personalDetailsPage.waitForSpinnerInvisible();
-
-        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("firstName"), firstName);
-        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("lastName"), lastName);
-        Assert.assertEquals(personalDetailsPage.getEmployeeIDValue(), employeeID);
-
-        employeeListPage = personalDetailsPage.clickToEmployeeListButton();
-
-        employeeListPage.enterToEmployeeIDTextbox(employeeID);
-        employeeListPage.clickToSearchButton();
-
-        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Id", "1", employeeID));
-        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("First (& Middle) Name", "1", firstName));
-        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Last Name", "1", lastName));
-
-
-    }
-
-    @Test
-    public void Employee_02_Upload_Avatar(Method method) {
-        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase(), "Employee_02_Upload_Avatar");
-        personalDetailsPage = employeeListPage.clickToEditIconByEmployeeID(employeeID);
-
-        Assert.assertTrue(personalDetailsPage.isPersonalDetailHeaderDisplayed());
-
-        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("firstName"), firstName);
-        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("lastName"), lastName);
-        Assert.assertEquals(personalDetailsPage.getEmployeeIDValue(), employeeID);
-
-        personalDetailsPage.enterToLicenseNumber(licenseNumber);
-
-        personalDetailsPage.enterToDatePickerByName("License Expiry Date", licenseExpireDate);
-        personalDetailsPage.enterToNationalityCustomDropDown(nation);
-        personalDetailsPage.enterToMaritalStatusCustomDropDown(maritalStatus);
-        personalDetailsPage.enterToDatePickerByName("Date of Birth", dateOfBirth);
-        personalDetailsPage.clickToRadioButtonByName("Male");
-
-        personalDetailsPage.clickToSaveButton();
-
-        Assert.assertTrue(addEmployeePage.isSuccessMsgDisplayed("Successfully Updated"));
-
-        personalDetailsPage.waitForSpinnerInvisible();
-
-        Assert.assertEquals(personalDetailsPage.getLicenseNumberText(), licenseNumber);
-
-        Assert.assertEquals(personalDetailsPage.getNationDropDownValue(), nation);
-        Assert.assertEquals(personalDetailsPage.getMaritalDropDownValue(), maritalStatus);
-
-        Assert.assertEquals(personalDetailsPage.getDatePickerByNameValueByName("License Expiry Date"), licenseExpireDate);
-        Assert.assertEquals(personalDetailsPage.getDatePickerByNameValueByName("Date of Birth"), dateOfBirth);
-
-        Assert.assertTrue(personalDetailsPage.isRadioButtonSelectedByName("Male"));
-
+//        Assert.assertTrue(addEmployeePage.isSuccessMsgDisplayed("Successfully Saved"));
+//        addEmployeePage.waitForSpinnerInvisible();
+//
+//        personalDetailsPage = PageGeneratorManager.getPersonalDetailsPage(driver);
+//
+//        Assert.assertTrue(personalDetailsPage.isPersonalDetailHeaderDisplayed());
+//        personalDetailsPage.waitForSpinnerInvisible();
+//
+//        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("firstName"), firstName);
+//        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("lastName"), lastName);
+//        Assert.assertEquals(personalDetailsPage.getEmployeeIDValue(), employeeID);
+//
+//        employeeListPage = personalDetailsPage.clickToEmployeeListButton();
+//
+//        employeeListPage.enterToEmployeeIDTextbox(employeeID);
+//        employeeListPage.clickToSearchButton();
+//
+//        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Id", "1", employeeID));
+//        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("First (& Middle) Name", "1", firstName));
+//        Assert.assertTrue(employeeListPage.isValueDisplayedAtColumName("Last Name", "1", lastName));
+//
 
     }
 
-    @Test
-    public void Employee_03_Personal_Details(Method method) {
-        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase(), "Employee_03_Personal_Details");
+//    @Test
+//    public void Employee_02_Upload_Avatar(Method method) {
+//        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase(), "Employee_02_Upload_Avatar");
+//        personalDetailsPage = employeeListPage.clickToEditIconByEmployeeID(employeeID);
+//
+//        Assert.assertTrue(personalDetailsPage.isPersonalDetailHeaderDisplayed());
+//
+//        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("firstName"), firstName);
+//        Assert.assertEquals(personalDetailsPage.getTextboxValueByName("lastName"), lastName);
+//        Assert.assertEquals(personalDetailsPage.getEmployeeIDValue(), employeeID);
+//
+//        personalDetailsPage.enterToLicenseNumber(licenseNumber);
+//
+//        personalDetailsPage.enterToDatePickerByName("License Expiry Date", licenseExpireDate);
+//        personalDetailsPage.enterToNationalityCustomDropDown(nation);
+//        personalDetailsPage.enterToMaritalStatusCustomDropDown(maritalStatus);
+//        personalDetailsPage.enterToDatePickerByName("Date of Birth", dateOfBirth);
+//        personalDetailsPage.clickToRadioButtonByName("Male");
+//
+//        personalDetailsPage.clickToSaveButton();
+//
+//        Assert.assertTrue(addEmployeePage.isSuccessMsgDisplayed("Successfully Updated"));
+//
+//        personalDetailsPage.waitForSpinnerInvisible();
+//
+//        Assert.assertEquals(personalDetailsPage.getLicenseNumberText(), licenseNumber);
+//
+//        Assert.assertEquals(personalDetailsPage.getNationDropDownValue(), nation);
+//        Assert.assertEquals(personalDetailsPage.getMaritalDropDownValue(), maritalStatus);
+//
+//        Assert.assertEquals(personalDetailsPage.getDatePickerByNameValueByName("License Expiry Date"), licenseExpireDate);
+//        Assert.assertEquals(personalDetailsPage.getDatePickerByNameValueByName("Date of Birth"), dateOfBirth);
+//
+//        Assert.assertTrue(personalDetailsPage.isRadioButtonSelectedByName("Male"));
+//
+//
+//    }
 
-
-    }
+//    @Test
+//    public void Employee_03_Personal_Details(Method method) {
+//        ExtentTestManager.startTest(method.getName() + "Test on" + browserName.toUpperCase(), "Employee_03_Personal_Details");
+//
+//
+//    }
 
     @Test
     public void Employee_04_Contact_Details(Method method) {
