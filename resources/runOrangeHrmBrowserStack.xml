@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="NopCommerce Automation Testing">
+<!--    <listeners>-->
+<!--        <listener class-name="commons.MethodListener"/>-->
+<!--        <listener class-name="reportConfigs.AllureTestListener"/>-->
+<!--        <listener class-name="reportConfigs.ExtentTestListener"/>-->
+<!--    </listeners>-->
+
+    <parameter name="url" value="http://automationfc.testing:90/orangehrm"/>
+    <parameter name="server" value="dev"/>
+    <test name="Run on Chrome browser -Window 11" preserve-order="true">
+        <parameter name="os" value="Window 11"/>
+        <parameter name="browser" value="chrome" />
+        <parameter name="browser_version" value="latest"/>
+
+        <classes>
+            <class name="com.orangehrm.cloudTesting.PIM_01_Employee_List_Local" />
+        </classes>
+    </test>
+    <test name="Run on Chrome browser-Mac Ventura" preserve-order="true">
+        <parameter name="os" value="macOS 13"/>
+        <parameter name="browser" value="safari" />
+        <parameter name="browser_version" value="17"/>
+
+        <classes>
+            <class name="com.orangehrm.cloudTesting.PIM_01_Employee_List_Local" />
+        </classes>
+    </test>
+
+
+
+</suite>

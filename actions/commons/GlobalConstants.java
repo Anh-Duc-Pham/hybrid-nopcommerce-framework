@@ -30,5 +30,10 @@ public class GlobalConstants {
 
     public static final String JAVA_VERSION = System.getProperty("java.version");
 
+    public static final String SAUCE_USERNAME = "automationfc";
+    public static final String SAUCE_AUTOMATION_KEY = "fgsdgfsdgfsdgdsff";
+    public static final String SAUCE_URL = "https://" + SAUCE_USERNAME + ":" + SAUCE_AUTOMATION_KEY + "@ondemand.eu-central-1.saucelabs.com:433/wd/hub";
+
+
 
 }
